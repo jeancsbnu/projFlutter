@@ -1,0 +1,448 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter_modular/src/widgets/router_outlet_list.dart', 'packages/treina_api_breeds/pages/racas/raca_controller.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter_mobx/src/stateful_observer_widget.dart', 'packages/flutter/src/material/progress_indicator.dart', 'packages/flutter/src/widgets/scroll_view.dart'], (function load__packages__treina_api_breeds__pages__racas__raca_page_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter_modular__src__widgets__router_outlet_list$46dart, packages__treina_api_breeds__pages__racas__raca_controller$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__material__colors$46dart, packages__flutter_mobx__src__stateful_observer_widget$46dart, packages__flutter__src__material__progress_indicator$46dart, packages__flutter__src__widgets__scroll_view$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const modular_base = packages__flutter_modular__src__widgets__router_outlet_list$46dart.src__modular_base;
+  const raca_controller = packages__treina_api_breeds__pages__racas__raca_controller$46dart.pages__racas__raca_controller;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const app_bar = packages__flutter__src__material__icon_button$46dart.src__material__app_bar;
+  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const raised_button = packages__flutter__src__material__icon_button$46dart.src__material__raised_button;
+  const list_tile = packages__flutter__src__material__icon_button$46dart.src__material__list_tile;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const observer = packages__flutter_mobx__src__stateful_observer_widget$46dart.src__observer;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  var raca_page = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    RacaControllerL: () => (T.RacaControllerL = dart.constFn(dart.legacy(raca_controller.RacaController)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    ListTileL: () => (T.ListTileL = dart.constFn(dart.legacy(list_tile.ListTile)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    BuildContextLAndintLToListTileL: () => (T.BuildContextLAndintLToListTileL = dart.constFn(dart.fnType(T.ListTileL(), [T.BuildContextL(), T.intL()])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextLToWidgetL: () => (T.BuildContextLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL()])))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 13,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 13,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 25,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 11,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 11,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 24,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 29,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 35,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 17,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.constList([C[13] || CT.C13, C[14] || CT.C14], T._LocationL());
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[12] || CT.C12,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 34,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 44,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22], T._LocationL());
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[21] || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 25,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 21,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26], T._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 19,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29], T._LocationL());
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 53,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 15,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 15,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32, C[33] || CT.C33], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 27,
+        [_Location_line]: 50,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 24,
+        [_Location_line]: 31,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36], T._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 31,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "appBar",
+        [_Location_column]: 9,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 9,
+        [_Location_line]: 31,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///D:/desenvolvimento/ProjetoMobile/treina_api_breeds/lib/pages/racas/raca_page.dart"
+      });
+    }
+  }, false);
+  var C = Array(41).fill(void 0);
+  var I = ["package:treina_api_breeds/pages/racas/raca_page.dart"];
+  raca_page.RacaPage = class RacaPage extends framework.StatefulWidget {
+    createState() {
+      return new raca_page._RacaPageState.new();
+    }
+  };
+  (raca_page.RacaPage.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    raca_page.RacaPage.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = raca_page.RacaPage.prototype;
+  dart.addTypeTests(raca_page.RacaPage);
+  dart.addTypeCaches(raca_page.RacaPage);
+  dart.setMethodSignature(raca_page.RacaPage, () => ({
+    __proto__: dart.getMethods(raca_page.RacaPage.__proto__),
+    createState: dart.fnType(dart.legacy(raca_page._RacaPageState), [])
+  }));
+  dart.setLibraryUri(raca_page.RacaPage, I[0]);
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  raca_page._RacaPageState = class _RacaPageState extends framework.State$(dart.legacy(raca_page.RacaPage)) {
+    initState() {
+      super.initState();
+      this.racaController.fetchOcurrencersResponseModeList();
+    }
+    build(context) {
+      return new scaffold.Scaffold.new({appBar: new app_bar.AppBar.new({title: new text.Text.new("Raças", {style: new text_style.TextStyle.new({color: colors.Colors.white, fontWeight: ui.FontWeight.bold}), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), backgroundColor: theme.Theme.of(context).primaryColor, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), body: new observer.Observer.new({builder: dart.fn(context => {
+            if (this.racaController.racaModel == null || this.racaController.racaModel.error != null) {
+              return new basic.Center.new({child: new raised_button.RaisedButton.new({child: new text.Text.new("Pressione novamente", {$creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), onPressed: dart.fn(() => {
+                    this.racaController.fetchOcurrencersResponseModeList();
+                  }, T.VoidToNull()), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+            }
+            if (this.racaController.racaModel.value == null) {
+              return new basic.Center.new({child: new progress_indicator.CircularProgressIndicator.new({$creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+            }
+            let list = this.racaController.racaModel.value.message;
+            return new scroll_view.ListView.builder({itemCount: list[$length], itemBuilder: dart.fn((context, index) => new list_tile.ListTile.new({title: new text.Text.new(list[$_get](index), {style: new text_style.TextStyle.new({color: theme.Theme.of(context).primaryColor, fontWeight: ui.FontWeight.normal}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23}), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), T.BuildContextLAndintLToListTileL()), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30});
+          }, T.BuildContextLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+    }
+  };
+  (raca_page._RacaPageState.new = function() {
+    this.racaController = modular_base.Modular.get(T.RacaControllerL());
+    raca_page._RacaPageState.__proto__.new.call(this);
+    ;
+  }).prototype = raca_page._RacaPageState.prototype;
+  dart.addTypeTests(raca_page._RacaPageState);
+  dart.addTypeCaches(raca_page._RacaPageState);
+  dart.setMethodSignature(raca_page._RacaPageState, () => ({
+    __proto__: dart.getMethods(raca_page._RacaPageState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(raca_page._RacaPageState, I[0]);
+  dart.setFieldSignature(raca_page._RacaPageState, () => ({
+    __proto__: dart.getFields(raca_page._RacaPageState.__proto__),
+    racaController: dart.finalFieldType(dart.legacy(raca_controller.RacaController))
+  }));
+  dart.trackLibraries("packages/treina_api_breeds/pages/racas/raca_page.dart", {
+    "package:treina_api_breeds/pages/racas/raca_page.dart": raca_page
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["raca_page.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAOkC;IAAgB;;;;;;EAClD;;;;;;;;;;;;;;;AAQqB,MAAX;AAC2C,MAAjD,AAAe;IACjB;UAG0B;AACxB,YAAO,oCACK,+BACC,kBACL,iBACO,qCAAwB,iCAA8B,gGAExC,AAAY,eAAT,OAAO,+EAE7B,oCAAkB,QAAc;AACpC,gBAAI,AAAe,AAAU,yCAAW,AAAe,AAAU,AAAM;AACrE,oBAAO,8BACE,2CACE,kBAAK,4FACD;AACwC,oBAAjD,AAAe;;;AAKvB,gBAAI,AAAe,AAAU,AAAM;AACjC,oBAAO,8BACE;;AAIP,uBAAO,AAAe,AAAU,AAAM;AAE1C,kBAAgB,8CACD,AAAK,IAAD,wBACF,SAAc,SAAa,UAC/B,mCACE,kBACL,AAAI,IAAA,QAAC,KAAK,WACH,qCACU,AAAY,eAAT,OAAO,4BACA;;IAK7C;;;IAnDM,sBAAyB;;;EAoDjC","file":"../../../../../../packages/treina_api_breeds/pages/racas/raca_page.dart.lib.js"}');
+  // Exports:
+  return {
+    pages__racas__raca_page: raca_page
+  };
+}));
+
+//# sourceMappingURL=raca_page.dart.lib.js.map

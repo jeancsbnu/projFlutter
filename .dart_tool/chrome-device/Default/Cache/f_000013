@@ -1,0 +1,300 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter_mobx/src/observer_widget_mixin.dart', 'packages/mobx/src/api/extensions.dart'], (function load__packages__flutter_mobx__src__stateful_observer_widget_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter_mobx__src__observer_widget_mixin$46dart, packages__mobx__src__api__extensions$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const observer_widget_mixin = packages__flutter_mobx__src__observer_widget_mixin$46dart.src__observer_widget_mixin;
+  const core$ = packages__mobx__src__api__extensions$46dart.src__core;
+  var stateful_observer_widget = Object.create(dart.library);
+  var stateless_observer_widget = Object.create(dart.library);
+  var observer = Object.create(dart.library);
+  var flutter_mobx = Object.create(dart.library);
+  var $skip = dartx.skip;
+  var $firstWhere = dartx.firstWhere;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StatefulObserverWidgetL: () => (T.StatefulObserverWidgetL = dart.constFn(dart.legacy(stateful_observer_widget.StatefulObserverWidget)))(),
+    StatelessObserverWidgetL: () => (T.StatelessObserverWidgetL = dart.constFn(dart.legacy(stateless_observer_widget.StatelessObserverWidget)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    StringLToboolL: () => (T.StringLToboolL = dart.constFn(dart.fnType(T.boolL(), [T.StringL()])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    VoidToboolL: () => (T.VoidToboolL = dart.constFn(dart.fnType(T.boolL(), [])))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var C = [];
+  var I = [
+    "package:flutter_mobx/src/stateful_observer_widget.dart",
+    "package:flutter_mobx/src/stateless_observer_widget.dart",
+    "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_mobx-1.1.0+2/lib/src/observer.dart",
+    "package:flutter_mobx/src/observer.dart"
+  ];
+  var _name = dart.privateName(stateful_observer_widget, "StatefulObserverWidget._name");
+  var _context = dart.privateName(stateful_observer_widget, "StatefulObserverWidget._context");
+  var _name$ = dart.privateName(stateful_observer_widget, "_name");
+  var _context$ = dart.privateName(stateful_observer_widget, "_context");
+  const StatefulWidget_ObserverWidgetMixin$36 = class StatefulWidget_ObserverWidgetMixin extends framework.StatefulWidget {};
+  (StatefulWidget_ObserverWidgetMixin$36.new = function(opts) {
+    StatefulWidget_ObserverWidgetMixin$36.__proto__.new.call(this, opts);
+  }).prototype = StatefulWidget_ObserverWidgetMixin$36.prototype;
+  dart.applyMixin(StatefulWidget_ObserverWidgetMixin$36, observer_widget_mixin.ObserverWidgetMixin);
+  stateful_observer_widget.StatefulObserverWidget = class StatefulObserverWidget extends StatefulWidget_ObserverWidgetMixin$36 {
+    get [_name$]() {
+      return this[_name];
+    }
+    set [_name$](value) {
+      super[_name$] = value;
+    }
+    get [_context$]() {
+      return this[_context];
+    }
+    set [_context$](value) {
+      super[_context$] = value;
+    }
+    getName() {
+      let t0;
+      t0 = this[_name$];
+      return t0 == null ? dart.str(this) : t0;
+    }
+    getContext() {
+      let t0;
+      t0 = this[_context$];
+      return t0 == null ? super.getContext() : t0;
+    }
+    createElement() {
+      return new stateful_observer_widget.StatefulObserverElement.new(this);
+    }
+  };
+  (stateful_observer_widget.StatefulObserverWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let context = opts && 'context' in opts ? opts.context : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_name] = name;
+    this[_context] = context;
+    stateful_observer_widget.StatefulObserverWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = stateful_observer_widget.StatefulObserverWidget.prototype;
+  dart.addTypeTests(stateful_observer_widget.StatefulObserverWidget);
+  dart.addTypeCaches(stateful_observer_widget.StatefulObserverWidget);
+  dart.setMethodSignature(stateful_observer_widget.StatefulObserverWidget, () => ({
+    __proto__: dart.getMethods(stateful_observer_widget.StatefulObserverWidget.__proto__),
+    getName: dart.fnType(dart.legacy(core.String), []),
+    createElement: dart.fnType(dart.legacy(stateful_observer_widget.StatefulObserverElement), [])
+  }));
+  dart.setLibraryUri(stateful_observer_widget.StatefulObserverWidget, I[0]);
+  dart.setFieldSignature(stateful_observer_widget.StatefulObserverWidget, () => ({
+    __proto__: dart.getFields(stateful_observer_widget.StatefulObserverWidget.__proto__),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String)),
+    [_context$]: dart.finalFieldType(dart.legacy(core$.ReactiveContext))
+  }));
+  const StatefulElement_ObserverElementMixin$36 = class StatefulElement_ObserverElementMixin extends framework.StatefulElement {};
+  (StatefulElement_ObserverElementMixin$36.new = function(widget) {
+    observer_widget_mixin.ObserverElementMixin[dart.mixinNew].call(this);
+    StatefulElement_ObserverElementMixin$36.__proto__.new.call(this, widget);
+  }).prototype = StatefulElement_ObserverElementMixin$36.prototype;
+  dart.applyMixin(StatefulElement_ObserverElementMixin$36, observer_widget_mixin.ObserverElementMixin);
+  stateful_observer_widget.StatefulObserverElement = class StatefulObserverElement extends StatefulElement_ObserverElementMixin$36 {
+    get widget() {
+      return T.StatefulObserverWidgetL().as(super.widget);
+    }
+  };
+  (stateful_observer_widget.StatefulObserverElement.new = function(widget) {
+    stateful_observer_widget.StatefulObserverElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = stateful_observer_widget.StatefulObserverElement.prototype;
+  dart.addTypeTests(stateful_observer_widget.StatefulObserverElement);
+  dart.addTypeCaches(stateful_observer_widget.StatefulObserverElement);
+  dart.setGetterSignature(stateful_observer_widget.StatefulObserverElement, () => ({
+    __proto__: dart.getGetters(stateful_observer_widget.StatefulObserverElement.__proto__),
+    widget: dart.legacy(stateful_observer_widget.StatefulObserverWidget)
+  }));
+  dart.setLibraryUri(stateful_observer_widget.StatefulObserverElement, I[0]);
+  var _name$0 = dart.privateName(stateless_observer_widget, "StatelessObserverWidget._name");
+  var _context$0 = dart.privateName(stateless_observer_widget, "StatelessObserverWidget._context");
+  var _name$1 = dart.privateName(stateless_observer_widget, "_name");
+  var _context$1 = dart.privateName(stateless_observer_widget, "_context");
+  const StatelessWidget_ObserverWidgetMixin$36 = class StatelessWidget_ObserverWidgetMixin extends framework.StatelessWidget {};
+  (StatelessWidget_ObserverWidgetMixin$36.new = function(opts) {
+    StatelessWidget_ObserverWidgetMixin$36.__proto__.new.call(this, opts);
+  }).prototype = StatelessWidget_ObserverWidgetMixin$36.prototype;
+  dart.applyMixin(StatelessWidget_ObserverWidgetMixin$36, observer_widget_mixin.ObserverWidgetMixin);
+  stateless_observer_widget.StatelessObserverWidget = class StatelessObserverWidget extends StatelessWidget_ObserverWidgetMixin$36 {
+    get [_name$1]() {
+      return this[_name$0];
+    }
+    set [_name$1](value) {
+      super[_name$1] = value;
+    }
+    get [_context$1]() {
+      return this[_context$0];
+    }
+    set [_context$1](value) {
+      super[_context$1] = value;
+    }
+    getName() {
+      let t0;
+      t0 = this[_name$1];
+      return t0 == null ? dart.str(this) : t0;
+    }
+    getContext() {
+      let t0;
+      t0 = this[_context$1];
+      return t0 == null ? super.getContext() : t0;
+    }
+    createElement() {
+      return new stateless_observer_widget.StatelessObserverElement.new(this);
+    }
+  };
+  (stateless_observer_widget.StatelessObserverWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let context = opts && 'context' in opts ? opts.context : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_name$0] = name;
+    this[_context$0] = context;
+    stateless_observer_widget.StatelessObserverWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = stateless_observer_widget.StatelessObserverWidget.prototype;
+  dart.addTypeTests(stateless_observer_widget.StatelessObserverWidget);
+  dart.addTypeCaches(stateless_observer_widget.StatelessObserverWidget);
+  dart.setMethodSignature(stateless_observer_widget.StatelessObserverWidget, () => ({
+    __proto__: dart.getMethods(stateless_observer_widget.StatelessObserverWidget.__proto__),
+    getName: dart.fnType(dart.legacy(core.String), []),
+    createElement: dart.fnType(dart.legacy(stateless_observer_widget.StatelessObserverElement), [])
+  }));
+  dart.setLibraryUri(stateless_observer_widget.StatelessObserverWidget, I[1]);
+  dart.setFieldSignature(stateless_observer_widget.StatelessObserverWidget, () => ({
+    __proto__: dart.getFields(stateless_observer_widget.StatelessObserverWidget.__proto__),
+    [_name$1]: dart.finalFieldType(dart.legacy(core.String)),
+    [_context$1]: dart.finalFieldType(dart.legacy(core$.ReactiveContext))
+  }));
+  const StatelessElement_ObserverElementMixin$36 = class StatelessElement_ObserverElementMixin extends framework.StatelessElement {};
+  (StatelessElement_ObserverElementMixin$36.new = function(widget) {
+    observer_widget_mixin.ObserverElementMixin[dart.mixinNew].call(this);
+    StatelessElement_ObserverElementMixin$36.__proto__.new.call(this, widget);
+  }).prototype = StatelessElement_ObserverElementMixin$36.prototype;
+  dart.applyMixin(StatelessElement_ObserverElementMixin$36, observer_widget_mixin.ObserverElementMixin);
+  stateless_observer_widget.StatelessObserverElement = class StatelessObserverElement extends StatelessElement_ObserverElementMixin$36 {
+    get widget() {
+      return T.StatelessObserverWidgetL().as(super.widget);
+    }
+  };
+  (stateless_observer_widget.StatelessObserverElement.new = function(widget) {
+    stateless_observer_widget.StatelessObserverElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = stateless_observer_widget.StatelessObserverElement.prototype;
+  dart.addTypeTests(stateless_observer_widget.StatelessObserverElement);
+  dart.addTypeCaches(stateless_observer_widget.StatelessObserverElement);
+  dart.setGetterSignature(stateless_observer_widget.StatelessObserverElement, () => ({
+    __proto__: dart.getGetters(stateless_observer_widget.StatelessObserverElement.__proto__),
+    widget: dart.legacy(stateless_observer_widget.StatelessObserverWidget)
+  }));
+  dart.setLibraryUri(stateless_observer_widget.StatelessObserverElement, I[1]);
+  var builder$ = dart.privateName(observer, "Observer.builder");
+  var debugConstructingStackFrame = dart.privateName(observer, "Observer.debugConstructingStackFrame");
+  observer.Observer = class Observer extends stateless_observer_widget.StatelessObserverWidget {
+    get builder() {
+      return this[builder$];
+    }
+    set builder(value) {
+      super.builder = value;
+    }
+    get debugConstructingStackFrame() {
+      return this[debugConstructingStackFrame];
+    }
+    set debugConstructingStackFrame(value) {
+      super.debugConstructingStackFrame = value;
+    }
+    getName() {
+      return dart.notNull(super.getName()) + (this.debugConstructingStackFrame != null ? "\n" + dart.str(this.debugConstructingStackFrame) : "");
+    }
+    build(context) {
+      let t0;
+      t0 = context;
+      return this.builder(t0);
+    }
+    static debugFindConstructingStackFrame(stackTrace = null) {
+      let stackFrame = null;
+      if (!dart.test(dart.fn(() => {
+        let t0;
+        if (dart.test(observer.debugAddStackTraceInObserverName)) {
+          let stackTraceString = dart.toString((t0 = stackTrace, t0 == null ? core.StackTrace.current : t0));
+          stackFrame = convert.LineSplitter.split(stackTraceString)[$skip](3)[$firstWhere](dart.fn(frame => !dart.test(observer.Observer._constructorStackFramePattern.hasMatch(frame)), T.StringLToboolL()), {orElse: dart.fn(() => null, T.VoidToNull())});
+        }
+        return true;
+      }, T.VoidToboolL())())) dart.assertFailed(null, I[2], 56, 12, "() {\n      if (debugAddStackTraceInObserverName) {\n        final stackTraceString = (stackTrace ?? StackTrace.current).toString();\n        stackFrame = LineSplitter.split(stackTraceString)\n            // We are skipping frames representing:\n            // 1. The anonymous function in the assert\n            // 2. The debugFindConstructingStackFrame method\n            // 3. The constructor invoking debugFindConstructingStackFrame\n            //\n            // The 4th frame is either user source (which is what we want), or\n            // an Observer subclass' constructor (which we skip past with the\n            // regex)\n            .skip(3)\n            // Search for the first non-constructor frame\n            .firstWhere(\n                (frame) => !_constructorStackFramePattern.hasMatch(frame),\n                orElse: () => null);\n      }\n      return true;\n    }()");
+      return stackFrame;
+    }
+  };
+  (observer.Observer.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let builder = opts && 'builder' in opts ? opts.builder : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[builder$] = builder;
+    if (!(builder != null)) dart.assertFailed(null, I[2], 26, 16, "builder != null");
+    this[debugConstructingStackFrame] = observer.Observer.debugFindConstructingStackFrame();
+    observer.Observer.__proto__.new.call(this, {key: key, name: name, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = observer.Observer.prototype;
+  dart.addTypeTests(observer.Observer);
+  dart.addTypeCaches(observer.Observer);
+  observer.Observer[dart.implements] = () => [basic.Builder];
+  dart.setMethodSignature(observer.Observer, () => ({
+    __proto__: dart.getMethods(observer.Observer.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(observer.Observer, I[3]);
+  dart.setFieldSignature(observer.Observer, () => ({
+    __proto__: dart.getFields(observer.Observer.__proto__),
+    builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]))),
+    debugConstructingStackFrame: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineLazy(observer.Observer, {
+    /*observer.Observer._constructorStackFramePattern*/get _constructorStackFramePattern() {
+      return core.RegExp.new("\\bnew\\b");
+    }
+  }, true);
+  dart.defineLazy(observer, {
+    /*observer.debugAddStackTraceInObserverName*/get debugAddStackTraceInObserverName() {
+      return true;
+    },
+    set debugAddStackTraceInObserverName(_) {}
+  }, true);
+  dart.defineLazy(flutter_mobx, {
+    /*flutter_mobx.version*/get version() {
+      return "1.1.0+2";
+    }
+  }, true);
+  dart.trackLibraries("packages/flutter_mobx/src/stateful_observer_widget.dart", {
+    "package:flutter_mobx/src/stateful_observer_widget.dart": stateful_observer_widget,
+    "package:flutter_mobx/src/stateless_observer_widget.dart": stateless_observer_widget,
+    "package:flutter_mobx/src/observer.dart": observer,
+    "package:flutter_mobx/flutter_mobx.dart": flutter_mobx
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["stateful_observer_widget.dart","../../../../../../packages/flutter/lib/src/widgets/framework.dart","stateless_observer_widget.dart","observer.dart","../flutter_mobx.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAsBe;;;;;;IACS;;;;;;;;AAGF;0BAAgB,SAAL;IAAK;;;AAGJ;0BAAkB;IAAY;;AAGnB,sEAAwB;IAAK;;;QAftC;QAAqB;QAAgB;;IAC3D,cAAE,IAAI;IACH,iBAAE,OAAO;AAClB,mFAAW,GAAG;;EAAC;;;;;;;;;;;;;;;0DCk9IU;;;;;;;AD57IM,YAAa,gCAAP;IAAgC;;mEAH5B;AAAU,8EAAM,MAAM;;EAAC;;;;;;;;;;;;;;;;;;IElBzD;;;;;;IACS;;;;;;;;AAGF;0BAAgB,SAAL;IAAK;;;AAGJ;0BAAkB;IAAY;;AAGlB,wEAAyB;IAAK;;;QAfvC;QAAqB;QAAgB;;IAC5D,gBAAE,IAAI;IACH,mBAAE,OAAO;AAClB,qFAAW,GAAG;;EAAC;;;;;;;;;;;;;;;2DD+7IY;;;;;;;ACz6IK,YAAa,iCAAP;IAAiC;;qEAH5B;AAAU,gFAAM,MAAM;;EAAC;;;;;;;;;;;ICRpD;;;;;;IAGP;;;;;;;AAIT,YAAgB,cAAV,oBACL,AAA4B,2CACvB,AACF,gBADM,oCACJ;IAAG;UAGa;;AAAY,WAAQ,OAAO;YAAf,AAAO;IAAS;2CASI;AACjD;AAEP,qBAAO,AAmBN;;AAlBC,sBAAI;AACI,iCAAsD,eAAvB,KAAX,UAAU,EAAV,aAAyB;AAcxB,UAb3B,aAA0B,AASrB,AAEA,2BAX2B,gBAAgB,SAStC,gBAGF,QAAC,SAAU,WAAC,AAA8B,yDAAS,KAAK,kCAChD,cAAM;;AAExB,cAAO;;AAGT,YAAO,WAAU;IACnB;;;QArDc;QAAoB;QAAgB;;IAAhB;UACrB,AAAQ,OAAD;IACc,oCAAE;AAC9B,qDAAW,GAAG,QAAQ,IAAI;;EAAC;;;;;;;;;;;;;;;MAmBpB,+CAA6B;YAAG,iBAAO;;;;MAnCjD,yCAAgC;YAAG;;;;;MC+BlC,oBAAO","file":"../../../../../../../../packages/flutter_mobx/src/stateful_observer_widget.dart.lib.js"}');
+  // Exports:
+  return {
+    src__stateful_observer_widget: stateful_observer_widget,
+    src__stateless_observer_widget: stateless_observer_widget,
+    src__observer: observer,
+    flutter_mobx: flutter_mobx
+  };
+}));
+
+//# sourceMappingURL=stateful_observer_widget.dart.lib.js.map

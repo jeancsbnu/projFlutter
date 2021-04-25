@@ -1,0 +1,3092 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/widgets/page_view.dart', 'packages/flutter_modular/src/exceptions/modular_error.dart', 'packages/flutter_modular/src/interfaces/disposable.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/widgets/will_pop_scope.dart', 'packages/flutter_modular/src/navigator/modular_navigator_interface.dart', 'packages/flutter/src/widgets/safe_area.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter_modular/src/transitions/page_transition.dart', 'packages/flutter/src/material/page.dart', 'packages/flutter/src/cupertino/route.dart', 'packages/flutter_modular/src/interfaces/route_guard.dart'], (function load__packages__flutter_modular__src__widgets__router_outlet_list_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__widgets__page_view$46dart, packages__flutter_modular__src__exceptions__modular_error$46dart, packages__flutter_modular__src__interfaces__disposable$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__widgets__will_pop_scope$46dart, packages__flutter_modular__src__navigator__modular_navigator_interface$46dart, packages__flutter__src__widgets__safe_area$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter_modular__src__transitions__page_transition$46dart, packages__flutter__src__material__page$46dart, packages__flutter__src__cupertino__route$46dart, packages__flutter_modular__src__interfaces__route_guard$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const navigator = packages__flutter__src__widgets__widget_span$46dart.src__widgets__navigator;
+  const automatic_keep_alive = packages__flutter__src__widgets__widget_span$46dart.src__widgets__automatic_keep_alive;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const routes = packages__flutter__src__widgets__widget_span$46dart.src__widgets__routes;
+  const pages = packages__flutter__src__widgets__widget_span$46dart.src__widgets__pages;
+  const page_view = packages__flutter__src__widgets__page_view$46dart.src__widgets__page_view;
+  const modular_error = packages__flutter_modular__src__exceptions__modular_error$46dart.src__exceptions__modular_error;
+  const disposable = packages__flutter_modular__src__interfaces__disposable$46dart.src__interfaces__disposable;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const will_pop_scope = packages__flutter__src__widgets__will_pop_scope$46dart.src__widgets__will_pop_scope;
+  const modular_navigator_interface = packages__flutter_modular__src__navigator__modular_navigator_interface$46dart.src__navigator__modular_navigator_interface;
+  const safe_area = packages__flutter__src__widgets__safe_area$46dart.src__widgets__safe_area;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const page_transition = packages__flutter_modular__src__transitions__page_transition$46dart.src__transitions__page_transition;
+  const page = packages__flutter__src__material__page$46dart.src__material__page;
+  const route = packages__flutter__src__cupertino__route$46dart.src__cupertino__route;
+  const route_guard = packages__flutter_modular__src__interfaces__route_guard$46dart.src__interfaces__route_guard;
+  var router_outlet_list = Object.create(dart.library);
+  var widget_module = Object.create(dart.library);
+  var router_outlet = Object.create(dart.library);
+  var modular_stateless_widget = Object.create(dart.library);
+  var modular_stateful_widget_state = Object.create(dart.library);
+  var modular_app = Object.create(dart.library);
+  var consumer_widget = Object.create(dart.library);
+  var route_link = Object.create(dart.library);
+  var main_module = Object.create(dart.library);
+  var modular_navigator = Object.create(dart.library);
+  var old = Object.create(dart.library);
+  var transitions$ = Object.create(dart.library);
+  var modular_router = Object.create(dart.library);
+  var child_module = Object.create(dart.library);
+  var modular_base = Object.create(dart.library);
+  var inject = Object.create(dart.library);
+  var bind = Object.create(dart.library);
+  var flutter_modular = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $containsKey = dartx.containsKey;
+  var $firstWhere = dartx.firstWhere;
+  var $remove = dartx.remove;
+  var $contains = dartx.contains;
+  var $join = dartx.join;
+  var $_set = dartx._set;
+  var $keys = dartx.keys;
+  var $clear = dartx.clear;
+  var $forEach = dartx.forEach;
+  var $runtimeType = dartx.runtimeType;
+  var $replaceAll = dartx.replaceAll;
+  var $length = dartx.length;
+  var $toString = dartx.toString;
+  var $last = dartx.last;
+  var $addAll = dartx.addAll;
+  var $insert = dartx.insert;
+  var $split = dartx.split;
+  var $toLowerCase = dartx.toLowerCase;
+  var $replaceFirst = dartx.replaceFirst;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $expand = dartx.expand;
+  var $sort = dartx.sort;
+  var $isEmpty = dartx.isEmpty;
+  dart._checkModuleNullSafetyMode(false);
+  var T$ = {
+    RouterOutletL: () => (T$.RouterOutletL = dart.constFn(dart.legacy(router_outlet.RouterOutlet)))(),
+    _LocationL: () => (T$._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    ChildModuleL: () => (T$.ChildModuleL = dart.constFn(dart.legacy(child_module.ChildModule)))(),
+    ChildModuleLToRouterOutletL: () => (T$.ChildModuleLToRouterOutletL = dart.constFn(dart.fnType(T$.RouterOutletL(), [T$.ChildModuleL()])))(),
+    StringL: () => (T$.StringL = dart.constFn(dart.legacy(core.String)))(),
+    JSArrayOfStringL: () => (T$.JSArrayOfStringL = dart.constFn(_interceptors.JSArray$(T$.StringL())))(),
+    TypeL: () => (T$.TypeL = dart.constFn(dart.legacy(core.Type)))(),
+    LinkedMapOfTypeL$dynamic: () => (T$.LinkedMapOfTypeL$dynamic = dart.constFn(_js_helper.LinkedMap$(T$.TypeL(), dart.dynamic)))(),
+    InjectL: () => (T$.InjectL = dart.constFn(dart.legacy(inject.Inject)))(),
+    boolL: () => (T$.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    BindL: () => (T$.BindL = dart.constFn(dart.legacy(bind.Bind)))(),
+    BindLToboolL: () => (T$.BindLToboolL = dart.constFn(dart.fnType(T$.boolL(), [T$.BindL()])))(),
+    VoidToNull: () => (T$.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    DisposableL: () => (T$.DisposableL = dart.constFn(dart.legacy(disposable.Disposable)))(),
+    ChangeNotifierL: () => (T$.ChangeNotifierL = dart.constFn(dart.legacy(change_notifier.ChangeNotifier)))(),
+    SinkL: () => (T$.SinkL = dart.constFn(dart.legacy(core.Sink)))(),
+    TypeLAnddynamicToTypeL: () => (T$.TypeLAnddynamicToTypeL = dart.constFn(dart.fnType(T$.TypeL(), [T$.TypeL(), dart.dynamic])))(),
+    NavigatorStateL: () => (T$.NavigatorStateL = dart.constFn(dart.legacy(navigator.NavigatorState)))(),
+    GlobalKeyOfNavigatorStateL: () => (T$.GlobalKeyOfNavigatorStateL = dart.constFn(framework.GlobalKey$(T$.NavigatorStateL())))(),
+    GlobalKeyLOfNavigatorStateL: () => (T$.GlobalKeyLOfNavigatorStateL = dart.constFn(dart.legacy(T$.GlobalKeyOfNavigatorStateL())))(),
+    ObjectL: () => (T$.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    FutureOfboolL: () => (T$.FutureOfboolL = dart.constFn(async.Future$(T$.boolL())))(),
+    FutureLOfboolL: () => (T$.FutureLOfboolL = dart.constFn(dart.legacy(T$.FutureOfboolL())))(),
+    VoidToFutureLOfboolL: () => (T$.VoidToFutureLOfboolL = dart.constFn(dart.fnType(T$.FutureLOfboolL(), [])))(),
+    RouteL: () => (T$.RouteL = dart.constFn(dart.legacy(navigator.Route)))(),
+    RouteSettingsL: () => (T$.RouteSettingsL = dart.constFn(dart.legacy(navigator.RouteSettings)))(),
+    RouteSettingsLToRouteL: () => (T$.RouteSettingsLToRouteL = dart.constFn(dart.fnType(T$.RouteL(), [T$.RouteSettingsL()])))(),
+    WidgetL: () => (T$.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T$.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    DialogRouteOfObjectL: () => (T$.DialogRouteOfObjectL = dart.constFn(modular_navigator.DialogRoute$(T$.ObjectL())))(),
+    BuildContextLToWidgetL: () => (T$.BuildContextLToWidgetL = dart.constFn(dart.fnType(T$.WidgetL(), [T$.BuildContextL()])))(),
+    SafeAreaL: () => (T$.SafeAreaL = dart.constFn(dart.legacy(safe_area.SafeArea)))(),
+    doubleL: () => (T$.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    AnimationOfdoubleL: () => (T$.AnimationOfdoubleL = dart.constFn(animation.Animation$(T$.doubleL())))(),
+    AnimationLOfdoubleL: () => (T$.AnimationLOfdoubleL = dart.constFn(dart.legacy(T$.AnimationOfdoubleL())))(),
+    BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToSafeAreaL: () => (T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToSafeAreaL = dart.constFn(dart.fnType(T$.SafeAreaL(), [T$.BuildContextL(), T$.AnimationLOfdoubleL(), T$.AnimationLOfdoubleL()])))(),
+    BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL: () => (T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL = dart.constFn(dart.fnType(T$.WidgetL(), [T$.BuildContextL(), T$.AnimationLOfdoubleL(), T$.AnimationLOfdoubleL()])))(),
+    FadeTransitionL: () => (T$.FadeTransitionL = dart.constFn(dart.legacy(transitions.FadeTransition)))(),
+    BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleL__ToFadeTransitionL: () => (T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleL__ToFadeTransitionL = dart.constFn(dart.fnType(T$.FadeTransitionL(), [T$.BuildContextL(), T$.AnimationLOfdoubleL(), T$.AnimationLOfdoubleL(), T$.WidgetL()])))(),
+    ModularArgumentsL: () => (T$.ModularArgumentsL = dart.constFn(dart.legacy(modular_base.ModularArguments)))(),
+    BuildContextLAndModularArgumentsLToWidgetL: () => (T$.BuildContextLAndModularArgumentsLToWidgetL = dart.constFn(dart.fnType(T$.WidgetL(), [T$.BuildContextL(), T$.ModularArgumentsL()])))(),
+    BuildContextLAndModularArgumentsLToLWidgetL: () => (T$.BuildContextLAndModularArgumentsLToLWidgetL = dart.constFn(dart.legacy(T$.BuildContextLAndModularArgumentsLToWidgetL())))(),
+    DurationL: () => (T$.DurationL = dart.constFn(dart.legacy(core.Duration)))(),
+    FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL: () => (T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL = dart.constFn(dart.gFnType(T => {
+      var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+      var PageRouteBuilderOfTL = () => (PageRouteBuilderOfTL = dart.constFn(pages.PageRouteBuilder$(TL())))();
+      var PageRouteBuilderLOfTL = () => (PageRouteBuilderLOfTL = dart.constFn(dart.legacy(PageRouteBuilderOfTL())))();
+      return [PageRouteBuilderLOfTL(), [T$.BuildContextLAndModularArgumentsLToLWidgetL(), T$.ModularArgumentsL(), T$.DurationL(), T$.RouteSettingsL()]];
+    })))(),
+    TransitionTypeL: () => (T$.TransitionTypeL = dart.constFn(dart.legacy(modular_router.TransitionType)))(),
+    BuildContextLToLWidgetL: () => (T$.BuildContextLToLWidgetL = dart.constFn(dart.legacy(T$.BuildContextLToWidgetL())))(),
+    ModularRouterL: () => (T$.ModularRouterL = dart.constFn(dart.legacy(modular_router.ModularRouter)))(),
+    ModularRouterLToModularRouterL: () => (T$.ModularRouterLToModularRouterL = dart.constFn(dart.fnType(T$.ModularRouterL(), [T$.ModularRouterL()])))(),
+    StringLAndChildModuleLToNull: () => (T$.StringLAndChildModuleLToNull = dart.constFn(dart.fnType(core.Null, [T$.StringL(), T$.ChildModuleL()])))(),
+    OldL: () => (T$.OldL = dart.constFn(dart.legacy(old.Old)))(),
+    ModalRouteL: () => (T$.ModalRouteL = dart.constFn(dart.legacy(routes.ModalRoute)))(),
+    OldLAndModalRouteLToNull: () => (T$.OldLAndModalRouteLToNull = dart.constFn(dart.fnType(core.Null, [T$.OldL(), T$.ModalRouteL()])))(),
+    StringLAndGlobalKeyLOfNavigatorStateLToNull: () => (T$.StringLAndGlobalKeyLOfNavigatorStateLToNull = dart.constFn(dart.fnType(core.Null, [T$.StringL(), T$.GlobalKeyLOfNavigatorStateL()])))(),
+    IdentityMapOfStringL$GlobalKeyLOfNavigatorStateL: () => (T$.IdentityMapOfStringL$GlobalKeyLOfNavigatorStateL = dart.constFn(_js_helper.IdentityMap$(T$.StringL(), T$.GlobalKeyLOfNavigatorStateL())))(),
+    IdentityMapOfStringL$dynamic: () => (T$.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T$.StringL(), dart.dynamic)))(),
+    JSArrayOfTypeL: () => (T$.JSArrayOfTypeL = dart.constFn(_interceptors.JSArray$(T$.TypeL())))(),
+    IdentityMapOfStringL$StringL: () => (T$.IdentityMapOfStringL$StringL = dart.constFn(_js_helper.IdentityMap$(T$.StringL(), T$.StringL())))(),
+    RouteGuardL: () => (T$.RouteGuardL = dart.constFn(dart.legacy(route_guard.RouteGuard)))(),
+    JSArrayOfRouteGuardL: () => (T$.JSArrayOfRouteGuardL = dart.constFn(_interceptors.JSArray$(T$.RouteGuardL())))(),
+    RouteGuardLToboolL: () => (T$.RouteGuardLToboolL = dart.constFn(dart.fnType(T$.boolL(), [T$.RouteGuardL()])))(),
+    GuardExecutorL: () => (T$.GuardExecutorL = dart.constFn(dart.legacy(route_guard.GuardExecutor)))(),
+    ListOfGuardExecutorL: () => (T$.ListOfGuardExecutorL = dart.constFn(core.List$(T$.GuardExecutorL())))(),
+    ListLOfGuardExecutorL: () => (T$.ListLOfGuardExecutorL = dart.constFn(dart.legacy(T$.ListOfGuardExecutorL())))(),
+    RouteGuardLToListLOfGuardExecutorL: () => (T$.RouteGuardLToListLOfGuardExecutorL = dart.constFn(dart.fnType(T$.ListLOfGuardExecutorL(), [T$.RouteGuardL()])))(),
+    GuardExecutorLTovoid: () => (T$.GuardExecutorLTovoid = dart.constFn(dart.fnType(dart.void, [T$.GuardExecutorL()])))(),
+    intL: () => (T$.intL = dart.constFn(dart.legacy(core.int)))(),
+    ModularRouterLAndModularRouterLTointL: () => (T$.ModularRouterLAndModularRouterLTointL = dart.constFn(dart.fnType(T$.intL(), [T$.ModularRouterL(), T$.ModularRouterL()])))(),
+    ListOfRouteGuardL: () => (T$.ListOfRouteGuardL = dart.constFn(core.List$(T$.RouteGuardL())))(),
+    RouteLinkL: () => (T$.RouteLinkL = dart.constFn(dart.legacy(route_link.RouteLink)))(),
+    IdentityMapOfStringL$ChildModuleL: () => (T$.IdentityMapOfStringL$ChildModuleL = dart.constFn(_js_helper.IdentityMap$(T$.StringL(), T$.ChildModuleL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T$);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: scroll_physics.NeverScrollableScrollPhysics.prototype,
+        [ScrollPhysics_parent]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "module",
+        [_Location_column]: 19,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3], T$._LocationL());
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/widgets/router_outlet_list.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 9,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 9,
+        [_Location_line]: 38,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPageChanged",
+        [_Location_column]: 9,
+        [_Location_line]: 39,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 40,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9], T$._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 36,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/widgets/router_outlet_list.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "module",
+        [_Location_column]: 7,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], T$._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/widgets/widget_module.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 11,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "initialRoute",
+        [_Location_column]: 11,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onGenerateRoute",
+        [_Location_column]: 11,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18], T$._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/widgets/router_outlet.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "module",
+        [_Location_column]: 9,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22], T$._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 45,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/widgets/router_outlet.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onWillPop",
+        [_Location_column]: 7,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 45,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26], T$._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/widgets/router_outlet.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "distinct",
+        [_Location_column]: 7,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30], T$._LocationL());
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/inject/inject.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 44,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33], T$._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 36,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 26,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36], T$._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 21,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39], T$._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 150000
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 7,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.constList([C[43] || CT.C43, C[44] || CT.C44], T$._LocationL());
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[42] || CT.C42,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 2147483648.0
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 200000
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 152,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scopesRoute",
+        [_Location_column]: 7,
+        [_Location_line]: 153,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "explicitChildNodes",
+        [_Location_column]: 7,
+        [_Location_line]: 154,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51], T$._LocationL());
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 151,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 11,
+        [_Location_line]: 163,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 167,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[55] || CT.C55], T$._LocationL());
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[53] || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 162,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart"
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 11,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.constList([C[58] || CT.C58, C[59] || CT.C59], T$._LocationL());
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[57] || CT.C57,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 22,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/transitions/transitions.dart"
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.defaultTransition",
+        index: 0
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 300000
+      });
+    },
+    get C62() {
+      return C[62] = dart.fn(transitions$.fadeInTransition, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C63() {
+      return C[63] = dart.fn(transitions$.noTransition, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C64() {
+      return C[64] = dart.fn(transitions$.rightToLeft, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C65() {
+      return C[65] = dart.fn(transitions$.leftToRight, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C66() {
+      return C[66] = dart.fn(transitions$.upToDown, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C67() {
+      return C[67] = dart.fn(transitions$.downToUp, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C68() {
+      return C[68] = dart.fn(transitions$.scale, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C69() {
+      return C[69] = dart.fn(transitions$.rotate, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C70() {
+      return C[70] = dart.fn(transitions$.size, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C71() {
+      return C[71] = dart.fn(transitions$.rightToLeftWithFade, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C72() {
+      return C[72] = dart.fn(transitions$.leftToRightWithFade, T$.FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL());
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 270,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dispose",
+        [_Location_column]: 7,
+        [_Location_line]: 271,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.constList([C[75] || CT.C75, C[76] || CT.C76], T$._LocationL());
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[74] || CT.C74,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 269,
+        [_Location_file]: "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/routers/modular_router.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.fadeIn",
+        index: 1
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.noTransition",
+        index: 2
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.rightToLeft",
+        index: 3
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.leftToRight",
+        index: 4
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.upToDown",
+        index: 5
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.downToUp",
+        index: 6
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.scale",
+        index: 7
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.rotate",
+        index: 8
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.size",
+        index: 9
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.rightToLeftWithFade",
+        index: 10
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.leftToRightWithFade",
+        index: 11
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: modular_router.TransitionType.prototype,
+        [_name$]: "TransitionType.custom",
+        index: 12
+      });
+    },
+    get C89() {
+      return C[89] = dart.constList([C[60] || CT.C60, C[77] || CT.C77, C[78] || CT.C78, C[79] || CT.C79, C[80] || CT.C80, C[81] || CT.C81, C[82] || CT.C82, C[83] || CT.C83, C[84] || CT.C84, C[85] || CT.C85, C[86] || CT.C86, C[87] || CT.C87, C[88] || CT.C88], T$.TransitionTypeL());
+    }
+  }, false);
+  var C = Array(90).fill(void 0);
+  var I = [
+    "package:flutter_modular/src/widgets/router_outlet_list.dart",
+    "package:flutter_modular/src/widgets/widget_module.dart",
+    "package:flutter_modular/src/interfaces/child_module.dart",
+    "package:flutter_modular/src/widgets/router_outlet.dart",
+    "package:flutter_modular/src/inject/inject.dart",
+    "package:flutter_modular/src/widgets/modular_stateless_widget.dart",
+    "package:flutter_modular/src/widgets/modular_stateful_widget_state.dart",
+    "package:flutter_modular/src/widgets/modular_app.dart",
+    "package:flutter_modular/src/widgets/consumer_widget.dart",
+    "package:flutter_modular/src/routers/route_link.dart",
+    "package:flutter_modular/src/interfaces/main_module.dart",
+    "package:flutter_modular/src/navigator/modular_navigator.dart",
+    "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/navigator/modular_navigator.dart",
+    "package:flutter_modular/src/utils/old.dart",
+    "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/routers/modular_router.dart",
+    "package:flutter_modular/src/routers/modular_router.dart",
+    "package:flutter_modular/src/modular_base.dart",
+    "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/modular_base.dart",
+    "file:///D:/desenvolvimento/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-2.0.1/lib/src/inject/bind.dart",
+    "package:flutter_modular/src/inject/bind.dart"
+  ];
+  var modules$ = dart.privateName(router_outlet_list, "RouterOutletList.modules");
+  var physics$ = dart.privateName(router_outlet_list, "RouterOutletList.physics");
+  var controller$ = dart.privateName(router_outlet_list, "RouterOutletList.controller");
+  var ScrollPhysics_parent = dart.privateName(scroll_physics, "ScrollPhysics.parent");
+  router_outlet_list.RouterOutletList = class RouterOutletList extends framework.StatefulWidget {
+    get modules() {
+      return this[modules$];
+    }
+    set modules(value) {
+      super.modules = value;
+    }
+    get physics() {
+      return this[physics$];
+    }
+    set physics(value) {
+      super.physics = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    createState() {
+      return new router_outlet_list._RouterOutletListState.new();
+    }
+  };
+  (router_outlet_list.RouterOutletList.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let modules = opts && 'modules' in opts ? opts.modules : null;
+    let physics = opts && 'physics' in opts ? opts.physics : C[0] || CT.C0;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[modules$] = modules;
+    this[physics$] = physics;
+    this[controller$] = controller;
+    router_outlet_list.RouterOutletList.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = router_outlet_list.RouterOutletList.prototype;
+  dart.addTypeTests(router_outlet_list.RouterOutletList);
+  dart.addTypeCaches(router_outlet_list.RouterOutletList);
+  dart.setMethodSignature(router_outlet_list.RouterOutletList, () => ({
+    __proto__: dart.getMethods(router_outlet_list.RouterOutletList.__proto__),
+    createState: dart.fnType(dart.legacy(router_outlet_list._RouterOutletListState), [])
+  }));
+  dart.setLibraryUri(router_outlet_list.RouterOutletList, I[0]);
+  dart.setFieldSignature(router_outlet_list.RouterOutletList, () => ({
+    __proto__: dart.getFields(router_outlet_list.RouterOutletList.__proto__),
+    modules: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(child_module.ChildModule)))),
+    physics: dart.finalFieldType(dart.legacy(scroll_physics.ScrollPhysics)),
+    controller: dart.finalFieldType(dart.legacy(router_outlet_list.RouterOutletListController))
+  }));
+  var _dispose = dart.privateName(router_outlet_list, "_dispose");
+  var _pageController = dart.privateName(router_outlet_list, "_pageController");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  router_outlet_list._RouterOutletListState = class _RouterOutletListState extends framework.State$(dart.legacy(router_outlet_list.RouterOutletList)) {
+    initState() {
+      this.widget.controller.init(this.widget.modules);
+      super.initState();
+    }
+    dispose() {
+      this.widget.controller[_dispose]();
+      super.dispose();
+    }
+    build(context) {
+      return new page_view.PageView.new({physics: this.widget.physics, controller: this.widget.controller[_pageController], onPageChanged: dart.bind(this.widget.controller, 'changeModule'), children: this.widget.modules[$map](T$.RouterOutletL(), dart.fn(e => new router_outlet.RouterOutlet.new({module: e, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), T$.ChildModuleLToRouterOutletL()))[$toList](), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+    }
+  };
+  (router_outlet_list._RouterOutletListState.new = function() {
+    router_outlet_list._RouterOutletListState.__proto__.new.call(this);
+    ;
+  }).prototype = router_outlet_list._RouterOutletListState.prototype;
+  dart.addTypeTests(router_outlet_list._RouterOutletListState);
+  dart.addTypeCaches(router_outlet_list._RouterOutletListState);
+  dart.setMethodSignature(router_outlet_list._RouterOutletListState, () => ({
+    __proto__: dart.getMethods(router_outlet_list._RouterOutletListState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(router_outlet_list._RouterOutletListState, I[0]);
+  var _modules = dart.privateName(router_outlet_list, "_modules");
+  var _listen = dart.privateName(router_outlet_list, "_listen");
+  router_outlet_list.RouterOutletListController = class RouterOutletListController extends core.Object {
+    init(modules) {
+      this[_modules] = modules;
+      modular_base.Modular.updateCurrentModule(dart.toString(dart.runtimeType(modules[$_get](0))));
+    }
+    changeModule(index) {
+      let t0;
+      let name = dart.toString(dart.runtimeType(this[_modules][$_get](index)));
+      modular_base.Modular.updateCurrentModule(name);
+      this[_pageController].jumpToPage(index);
+      if (this[_listen] != null) {
+        t0 = index;
+        this[_listen](t0);
+      }
+    }
+    listen(current) {
+      this[_listen] = current;
+    }
+    [_dispose]() {
+      this[_pageController].dispose();
+    }
+  };
+  (router_outlet_list.RouterOutletListController.new = function() {
+    this[_pageController] = new page_view.PageController.new();
+    this[_modules] = null;
+    this[_listen] = null;
+    ;
+  }).prototype = router_outlet_list.RouterOutletListController.prototype;
+  dart.addTypeTests(router_outlet_list.RouterOutletListController);
+  dart.addTypeCaches(router_outlet_list.RouterOutletListController);
+  dart.setMethodSignature(router_outlet_list.RouterOutletListController, () => ({
+    __proto__: dart.getMethods(router_outlet_list.RouterOutletListController.__proto__),
+    init: dart.fnType(dart.void, [dart.legacy(core.List$(dart.legacy(child_module.ChildModule)))]),
+    changeModule: dart.fnType(dart.void, [dart.legacy(core.int)]),
+    listen: dart.fnType(dart.void, [dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int)]))]),
+    [_dispose]: dart.fnType(dart.void, [])
+  }));
+  dart.setLibraryUri(router_outlet_list.RouterOutletListController, I[0]);
+  dart.setFieldSignature(router_outlet_list.RouterOutletListController, () => ({
+    __proto__: dart.getFields(router_outlet_list.RouterOutletListController.__proto__),
+    [_pageController]: dart.finalFieldType(dart.legacy(page_view.PageController)),
+    [_modules]: dart.fieldType(dart.legacy(core.List$(dart.legacy(child_module.ChildModule)))),
+    [_listen]: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int)])))
+  }));
+  var _fakeModule = dart.privateName(widget_module, "_fakeModule");
+  widget_module.WidgetModule = class WidgetModule extends framework.StatelessWidget {
+    changeBinds(b) {
+      this[_fakeModule].changeBinds(b);
+    }
+    cleanInjects() {
+      this[_fakeModule].cleanInjects();
+    }
+    getBind(T, params, opts) {
+      let typesInRequest = opts && 'typesInRequest' in opts ? opts.typesInRequest : null;
+      return this[_fakeModule].getBind(dart.legacy(T), params, {typesInRequest: typesInRequest});
+    }
+    get paths() {
+      return T$.JSArrayOfStringL().of([dart.toString(this.runtimeType)]);
+    }
+    remove(T) {
+      return this[_fakeModule].remove(dart.legacy(T));
+    }
+    instance() {
+      this[_fakeModule].instance();
+    }
+    get routers() {
+      return null;
+    }
+    build(context) {
+      return new widget_module.ModularProvider.new({module: this, child: this.view, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+    }
+  };
+  (widget_module.WidgetModule.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_fakeModule] = new widget_module._FakeModule.new();
+    widget_module.WidgetModule.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this[_fakeModule].changeBinds(this.binds);
+  }).prototype = widget_module.WidgetModule.prototype;
+  dart.addTypeTests(widget_module.WidgetModule);
+  dart.addTypeCaches(widget_module.WidgetModule);
+  widget_module.WidgetModule[dart.implements] = () => [child_module.ChildModule];
+  dart.setMethodSignature(widget_module.WidgetModule, () => ({
+    __proto__: dart.getMethods(widget_module.WidgetModule.__proto__),
+    changeBinds: dart.fnType(dart.void, [dart.legacy(core.List$(dart.legacy(bind.Bind)))]),
+    cleanInjects: dart.fnType(dart.void, []),
+    getBind: dart.gFnType(T => [dart.legacy(T), [dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))], {typesInRequest: dart.legacy(core.List$(dart.legacy(core.Type)))}, {}]),
+    remove: dart.gFnType(T => [dart.legacy(core.bool), []]),
+    instance: dart.fnType(dart.void, []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(widget_module.WidgetModule, () => ({
+    __proto__: dart.getGetters(widget_module.WidgetModule.__proto__),
+    paths: dart.legacy(core.List$(dart.legacy(core.String))),
+    routers: dart.legacy(core.List$(dart.legacy(modular_router.ModularRouter)))
+  }));
+  dart.setLibraryUri(widget_module.WidgetModule, I[1]);
+  dart.setFieldSignature(widget_module.WidgetModule, () => ({
+    __proto__: dart.getFields(widget_module.WidgetModule.__proto__),
+    [_fakeModule]: dart.finalFieldType(dart.legacy(widget_module._FakeModule))
+  }));
+  var paths = dart.privateName(child_module, "ChildModule.paths");
+  var _binds = dart.privateName(child_module, "_binds");
+  var _singletonBinds = dart.privateName(child_module, "_singletonBinds");
+  var _getInjectType = dart.privateName(child_module, "_getInjectType");
+  var _callDispose = dart.privateName(child_module, "_callDispose");
+  child_module.ChildModule = class ChildModule extends core.Object {
+    get paths() {
+      return this[paths];
+    }
+    set paths(value) {
+      super.paths = value;
+    }
+    changeBinds(b) {
+      this[_binds] = b;
+    }
+    getBind(T, params, opts) {
+      let t1, t0;
+      let typesInRequest = opts && 'typesInRequest' in opts ? opts.typesInRequest : null;
+      let bindValue = null;
+      let type = this[_getInjectType](dart.legacy(T));
+      if (dart.test(this[_singletonBinds][$containsKey](type))) {
+        bindValue = dart.legacy(T).as(this[_singletonBinds][$_get](type));
+        return bindValue;
+      }
+      let bind = this[_binds][$firstWhere](dart.fn(b => dart.legacy(dart.fnType(dart.legacy(T), [T$.InjectL()])).is(b.inject), T$.BindLToboolL()), {orElse: dart.fn(() => null, T$.VoidToNull())});
+      if (bind == null) {
+        typesInRequest[$remove](type);
+        return null;
+      }
+      if (dart.test(typesInRequest[$contains](type))) {
+        dart.throw(new modular_error.ModularError.new("Recursive calls detected. This can cause StackOverflow.\nCheck the Binds of the " + dart.str(this.runtimeType) + " module:\n***\n" + dart.str(typesInRequest[$join]("\n")) + "\n***\n      \n      "));
+      } else {
+        typesInRequest[$add](type);
+      }
+      bindValue = dart.legacy(T).as((t0 = bind, t1 = new inject.Inject.new({params: params, typesInRequest: typesInRequest}), t0.inject(t1)));
+      if (dart.test(bind.singleton)) {
+        this[_singletonBinds][$_set](type, bindValue);
+      }
+      typesInRequest[$remove](type);
+      return bindValue;
+    }
+    remove(T) {
+      let type = this[_getInjectType](dart.legacy(T));
+      if (dart.test(this[_singletonBinds][$containsKey](type))) {
+        let inject = this[_singletonBinds][$_get](type);
+        this[_callDispose](inject);
+        this[_singletonBinds][$remove](type);
+        return true;
+      } else {
+        return false;
+      }
+    }
+    [_callDispose](bind) {
+      if (T$.DisposableL().is(bind) || T$.ChangeNotifierL().is(bind)) {
+        dart.dsend(bind, 'dispose', []);
+        return;
+      } else if (T$.SinkL().is(bind)) {
+        bind.close();
+        return;
+      }
+    }
+    cleanInjects() {
+      for (let key of this[_singletonBinds][$keys]) {
+        let _bind = this[_singletonBinds][$_get](key);
+        this[_callDispose](_bind);
+      }
+      this[_singletonBinds][$clear]();
+    }
+    [_getInjectType](B) {
+      this[_singletonBinds][$forEach](dart.fn((key, value) => {
+        if (dart.legacy(B).is(value)) {
+          return key;
+        }
+      }, T$.TypeLAnddynamicToTypeL()));
+      return dart.wrapType(dart.legacy(B));
+    }
+    instance() {
+      let t1, t0;
+      for (let bindElement of this[_binds]) {
+        if (!dart.test(bindElement.lazy)) {
+          let b = (t0 = bindElement, t1 = new inject.Inject.new(), t0.inject(t1));
+          this[_singletonBinds][$_set](dart.runtimeType(b), b);
+        }
+      }
+    }
+  };
+  (child_module.ChildModule.new = function() {
+    this[_binds] = null;
+    this[paths] = T$.JSArrayOfStringL().of([]);
+    this[_singletonBinds] = new (T$.LinkedMapOfTypeL$dynamic()).new();
+    this[_binds] = this.binds;
+  }).prototype = child_module.ChildModule.prototype;
+  dart.addTypeTests(child_module.ChildModule);
+  dart.addTypeCaches(child_module.ChildModule);
+  dart.setMethodSignature(child_module.ChildModule, () => ({
+    __proto__: dart.getMethods(child_module.ChildModule.__proto__),
+    changeBinds: dart.fnType(dart.void, [dart.legacy(core.List$(dart.legacy(bind.Bind)))]),
+    getBind: dart.gFnType(T => [dart.legacy(T), [dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))], {typesInRequest: dart.legacy(core.List$(dart.legacy(core.Type)))}, {}]),
+    remove: dart.gFnType(T => [dart.legacy(core.bool), []]),
+    [_callDispose]: dart.fnType(dart.dynamic, [dart.dynamic]),
+    cleanInjects: dart.fnType(dart.void, []),
+    [_getInjectType]: dart.gFnType(B => [dart.legacy(core.Type), []]),
+    instance: dart.fnType(dart.void, [])
+  }));
+  dart.setLibraryUri(child_module.ChildModule, I[2]);
+  dart.setFieldSignature(child_module.ChildModule, () => ({
+    __proto__: dart.getFields(child_module.ChildModule.__proto__),
+    [_binds]: dart.fieldType(dart.legacy(core.List$(dart.legacy(bind.Bind)))),
+    paths: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
+    [_singletonBinds]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.Type), dart.dynamic)))
+  }));
+  widget_module._FakeModule = class _FakeModule extends child_module.ChildModule {
+    get binds() {
+      return this.bindsInject;
+    }
+    get routers() {
+      return null;
+    }
+  };
+  (widget_module._FakeModule.new = function(opts) {
+    let path = opts && 'path' in opts ? opts.path : null;
+    let bindsInject = opts && 'bindsInject' in opts ? opts.bindsInject : null;
+    this.bindsInject = bindsInject;
+    widget_module._FakeModule.__proto__.new.call(this);
+    this.paths[$add](dart.toString(this.runtimeType));
+  }).prototype = widget_module._FakeModule.prototype;
+  dart.addTypeTests(widget_module._FakeModule);
+  dart.addTypeCaches(widget_module._FakeModule);
+  dart.setGetterSignature(widget_module._FakeModule, () => ({
+    __proto__: dart.getGetters(widget_module._FakeModule.__proto__),
+    binds: dart.legacy(core.List$(dart.legacy(bind.Bind))),
+    routers: dart.legacy(core.List$(dart.legacy(modular_router.ModularRouter)))
+  }));
+  dart.setLibraryUri(widget_module._FakeModule, I[1]);
+  dart.setFieldSignature(widget_module._FakeModule, () => ({
+    __proto__: dart.getFields(widget_module._FakeModule.__proto__),
+    bindsInject: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(bind.Bind))))
+  }));
+  var module$ = dart.privateName(widget_module, "ModularProvider.module");
+  var child$ = dart.privateName(widget_module, "ModularProvider.child");
+  widget_module.ModularProvider = class ModularProvider extends framework.StatefulWidget {
+    get module() {
+      return this[module$];
+    }
+    set module(value) {
+      super.module = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    createState() {
+      return new widget_module._ModularProviderState.new();
+    }
+  };
+  (widget_module.ModularProvider.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let module = opts && 'module' in opts ? opts.module : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[module$] = module;
+    this[child$] = child;
+    widget_module.ModularProvider.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = widget_module.ModularProvider.prototype;
+  dart.addTypeTests(widget_module.ModularProvider);
+  dart.addTypeCaches(widget_module.ModularProvider);
+  dart.setMethodSignature(widget_module.ModularProvider, () => ({
+    __proto__: dart.getMethods(widget_module.ModularProvider.__proto__),
+    createState: dart.fnType(dart.legacy(widget_module._ModularProviderState), [])
+  }));
+  dart.setLibraryUri(widget_module.ModularProvider, I[1]);
+  dart.setFieldSignature(widget_module.ModularProvider, () => ({
+    __proto__: dart.getFields(widget_module.ModularProvider.__proto__),
+    module: dart.finalFieldType(dart.legacy(child_module.ChildModule)),
+    child: dart.finalFieldType(dart.legacy(framework.Widget))
+  }));
+  widget_module._ModularProviderState = class _ModularProviderState extends framework.State$(dart.legacy(widget_module.ModularProvider)) {
+    initState() {
+      super.initState();
+      modular_base.Modular.addCoreInit(this.widget.module);
+      widget_module._debugPrintModular("-- " + dart.str(dart.runtimeType(this.widget.module)) + " INITIALIZED");
+    }
+    build(context) {
+      return this.widget.child;
+    }
+    dispose() {
+      super.dispose();
+      modular_base.Modular.removeModule(this.widget.module);
+      widget_module._debugPrintModular("-- " + dart.str(dart.runtimeType(this.widget.module)) + " DISPOSED");
+    }
+  };
+  (widget_module._ModularProviderState.new = function() {
+    widget_module._ModularProviderState.__proto__.new.call(this);
+    ;
+  }).prototype = widget_module._ModularProviderState.prototype;
+  dart.addTypeTests(widget_module._ModularProviderState);
+  dart.addTypeCaches(widget_module._ModularProviderState);
+  dart.setMethodSignature(widget_module._ModularProviderState, () => ({
+    __proto__: dart.getMethods(widget_module._ModularProviderState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(widget_module._ModularProviderState, I[1]);
+  widget_module._debugPrintModular = function _debugPrintModular(text) {
+    if (dart.test(modular_base.Modular.debugMode)) {
+      print.debugPrint(text);
+    }
+  };
+  var module$0 = dart.privateName(router_outlet, "RouterOutlet.module");
+  var initialRoute$ = dart.privateName(router_outlet, "RouterOutlet.initialRoute");
+  var navigatorKey$ = dart.privateName(router_outlet, "RouterOutlet.navigatorKey");
+  var keepAlive$ = dart.privateName(router_outlet, "RouterOutlet.keepAlive");
+  var onChangeRoute$ = dart.privateName(router_outlet, "RouterOutlet.onChangeRoute");
+  router_outlet.RouterOutlet = class RouterOutlet extends framework.StatefulWidget {
+    get module() {
+      return this[module$0];
+    }
+    set module(value) {
+      super.module = value;
+    }
+    get initialRoute() {
+      return this[initialRoute$];
+    }
+    set initialRoute(value) {
+      super.initialRoute = value;
+    }
+    get navigatorKey() {
+      return this[navigatorKey$];
+    }
+    set navigatorKey(value) {
+      super.navigatorKey = value;
+    }
+    get keepAlive() {
+      return this[keepAlive$];
+    }
+    set keepAlive(value) {
+      super.keepAlive = value;
+    }
+    get onChangeRoute() {
+      return this[onChangeRoute$];
+    }
+    set onChangeRoute(value) {
+      super.onChangeRoute = value;
+    }
+    createState() {
+      return new router_outlet._RouterOutletState.new();
+    }
+  };
+  (router_outlet.RouterOutlet.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let module = opts && 'module' in opts ? opts.module : null;
+    let navigatorKey = opts && 'navigatorKey' in opts ? opts.navigatorKey : null;
+    let initialRoute = opts && 'initialRoute' in opts ? opts.initialRoute : "/";
+    let keepAlive = opts && 'keepAlive' in opts ? opts.keepAlive : true;
+    let onChangeRoute = opts && 'onChangeRoute' in opts ? opts.onChangeRoute : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[module$0] = module;
+    this[navigatorKey$] = navigatorKey;
+    this[initialRoute$] = initialRoute;
+    this[keepAlive$] = keepAlive;
+    this[onChangeRoute$] = onChangeRoute;
+    router_outlet.RouterOutlet.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this.module.paths[$add](dart.toString(this.runtimeType));
+  }).prototype = router_outlet.RouterOutlet.prototype;
+  dart.addTypeTests(router_outlet.RouterOutlet);
+  dart.addTypeCaches(router_outlet.RouterOutlet);
+  dart.setMethodSignature(router_outlet.RouterOutlet, () => ({
+    __proto__: dart.getMethods(router_outlet.RouterOutlet.__proto__),
+    createState: dart.fnType(dart.legacy(router_outlet._RouterOutletState), [])
+  }));
+  dart.setLibraryUri(router_outlet.RouterOutlet, I[3]);
+  dart.setFieldSignature(router_outlet.RouterOutlet, () => ({
+    __proto__: dart.getFields(router_outlet.RouterOutlet.__proto__),
+    module: dart.finalFieldType(dart.legacy(child_module.ChildModule)),
+    initialRoute: dart.finalFieldType(dart.legacy(core.String)),
+    navigatorKey: dart.finalFieldType(dart.legacy(key.Key)),
+    keepAlive: dart.finalFieldType(dart.legacy(core.bool)),
+    onChangeRoute: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)])))
+  }));
+  var _key = dart.privateName(router_outlet, "_key");
+  const State_AutomaticKeepAliveClientMixin$36 = class State_AutomaticKeepAliveClientMixin extends framework.State$(dart.legacy(router_outlet.RouterOutlet)) {};
+  (State_AutomaticKeepAliveClientMixin$36.new = function() {
+    automatic_keep_alive.AutomaticKeepAliveClientMixin$(dart.legacy(router_outlet.RouterOutlet))[dart.mixinNew].call(this);
+    State_AutomaticKeepAliveClientMixin$36.__proto__.new.call(this);
+  }).prototype = State_AutomaticKeepAliveClientMixin$36.prototype;
+  dart.applyMixin(State_AutomaticKeepAliveClientMixin$36, automatic_keep_alive.AutomaticKeepAliveClientMixin$(dart.legacy(router_outlet.RouterOutlet)));
+  router_outlet._RouterOutletState = class _RouterOutletState extends State_AutomaticKeepAliveClientMixin$36 {
+    initState() {
+      let t0;
+      super.initState();
+      this[_key] = T$.GlobalKeyLOfNavigatorStateL().as((t0 = this.widget.navigatorKey, t0 == null ? modular_base.Modular.outletNavigatorKey(dart.toString(dart.runtimeType(this.widget.module))) : t0));
+    }
+    build(context) {
+      super.build(context);
+      return new will_pop_scope.WillPopScope.new({onWillPop: dart.fn(() => async.async(T$.boolL(), (function*() {
+          return !dart.test(yield this[_key].currentState.maybePop(T$.ObjectL()));
+        }).bind(this)), T$.VoidToFutureLOfboolL()), child: new widget_module.ModularProvider.new({module: this.widget.module, child: new navigator.Navigator.new({key: this[_key], initialRoute: this.widget.initialRoute, onGenerateRoute: dart.fn(setting => modular_base.Modular.generateRoute(dart.dynamic, setting, this.widget.module, this.widget.onChangeRoute), T$.RouteSettingsLToRouteL()), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
+    }
+    get wantKeepAlive() {
+      return this.widget.keepAlive;
+    }
+  };
+  (router_outlet._RouterOutletState.new = function() {
+    this[_key] = null;
+    router_outlet._RouterOutletState.__proto__.new.call(this);
+    ;
+  }).prototype = router_outlet._RouterOutletState.prototype;
+  dart.addTypeTests(router_outlet._RouterOutletState);
+  dart.addTypeCaches(router_outlet._RouterOutletState);
+  dart.setGetterSignature(router_outlet._RouterOutletState, () => ({
+    __proto__: dart.getGetters(router_outlet._RouterOutletState.__proto__),
+    wantKeepAlive: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(router_outlet._RouterOutletState, I[3]);
+  dart.setFieldSignature(router_outlet._RouterOutletState, () => ({
+    __proto__: dart.getFields(router_outlet._RouterOutletState.__proto__),
+    [_key]: dart.fieldType(dart.legacy(framework.GlobalKey$(dart.legacy(navigator.NavigatorState))))
+  }));
+  var _inject = dart.privateName(inject, "_inject");
+  const _is_InjectWidgetMixin_default = Symbol('_is_InjectWidgetMixin_default');
+  inject.InjectWidgetMixin$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var InjectOfTL = () => (InjectOfTL = dart.constFn(inject.Inject$(TL())))();
+    class InjectWidgetMixin extends framework.Widget {}
+    InjectWidgetMixin[dart.mixinOn] = Widget => class InjectWidgetMixin extends Widget {
+      get(S, opts) {
+        let params = opts && 'params' in opts ? opts.params : null;
+        return modular_base.Modular.get(dart.legacy(S), {module: dart.wrapType(TL()).toString(), params: params});
+      }
+      consumer(S, opts) {
+        let builder = opts && 'builder' in opts ? opts.builder : null;
+        let distinct = opts && 'distinct' in opts ? opts.distinct : null;
+        return new (consumer_widget.Consumer$(dart.legacy(S))).new({builder: builder, distinct: distinct, $creationLocationd_0dea112b090073317d4: C[27] || CT.C27});
+      }
+    };
+    (InjectWidgetMixin[dart.mixinNew] = function() {
+      this[_inject] = InjectOfTL().of();
+    }).prototype = InjectWidgetMixin.prototype;
+    dart.addTypeTests(InjectWidgetMixin);
+    InjectWidgetMixin.prototype[_is_InjectWidgetMixin_default] = true;
+    dart.addTypeCaches(InjectWidgetMixin);
+    InjectWidgetMixin[dart.implements] = () => [inject.InjectMixinBase$(dart.legacy(T)), framework.Widget];
+    dart.setMethodSignature(InjectWidgetMixin, () => ({
+      __proto__: dart.getMethods(InjectWidgetMixin.__proto__),
+      get: dart.gFnType(S => [dart.legacy(S), [], {params: dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))}, {}]),
+      consumer: dart.gFnType(S => [dart.legacy(framework.Widget), [], {builder: dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(S)])), distinct: dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(S), dart.legacy(S)]))}, {}], S => [dart.legacy(change_notifier.ChangeNotifier)])
+    }));
+    dart.setLibraryUri(InjectWidgetMixin, I[4]);
+    dart.setFieldSignature(InjectWidgetMixin, () => ({
+      __proto__: dart.getFields(InjectWidgetMixin.__proto__),
+      [_inject]: dart.finalFieldType(dart.legacy(inject.Inject$(dart.legacy(T))))
+    }));
+    return InjectWidgetMixin;
+  });
+  inject.InjectWidgetMixin = inject.InjectWidgetMixin$();
+  dart.addTypeTests(inject.InjectWidgetMixin, _is_InjectWidgetMixin_default);
+  const _is_ModularStatelessWidget_default = Symbol('_is_ModularStatelessWidget_default');
+  modular_stateless_widget.ModularStatelessWidget$ = dart.generic(T => {
+    const StatelessWidget_InjectWidgetMixin$36 = class StatelessWidget_InjectWidgetMixin extends framework.StatelessWidget {};
+    (StatelessWidget_InjectWidgetMixin$36.new = function(opts) {
+      inject.InjectWidgetMixin$(dart.legacy(T))[dart.mixinNew].call(this);
+      StatelessWidget_InjectWidgetMixin$36.__proto__.new.call(this, opts);
+    }).prototype = StatelessWidget_InjectWidgetMixin$36.prototype;
+    dart.applyMixin(StatelessWidget_InjectWidgetMixin$36, inject.InjectWidgetMixin$(dart.legacy(T)));
+    class ModularStatelessWidget extends StatelessWidget_InjectWidgetMixin$36 {}
+    (ModularStatelessWidget.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      ModularStatelessWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = ModularStatelessWidget.prototype;
+    dart.addTypeTests(ModularStatelessWidget);
+    ModularStatelessWidget.prototype[_is_ModularStatelessWidget_default] = true;
+    dart.addTypeCaches(ModularStatelessWidget);
+    dart.setLibraryUri(ModularStatelessWidget, I[5]);
+    return ModularStatelessWidget;
+  });
+  modular_stateless_widget.ModularStatelessWidget = modular_stateless_widget.ModularStatelessWidget$();
+  dart.addTypeTests(modular_stateless_widget.ModularStatelessWidget, _is_ModularStatelessWidget_default);
+  var controller = dart.privateName(modular_stateful_widget_state, "ModularState.controller");
+  const _is_ModularState_default = Symbol('_is_ModularState_default');
+  modular_stateful_widget_state.ModularState$ = dart.generic((TWidget, TBind) => {
+    var TBindL = () => (TBindL = dart.constFn(dart.legacy(TBind)))();
+    class ModularState extends framework.State$(dart.legacy(TWidget)) {
+      get controller() {
+        return this[controller];
+      }
+      set controller(value) {
+        super.controller = value;
+      }
+      dispose() {
+        super.dispose();
+        modular_base.Modular.dispose(TBindL());
+      }
+    }
+    (ModularState.new = function() {
+      this[controller] = modular_base.Modular.get(TBindL());
+      ModularState.__proto__.new.call(this);
+      ;
+    }).prototype = ModularState.prototype;
+    dart.addTypeTests(ModularState);
+    ModularState.prototype[_is_ModularState_default] = true;
+    dart.addTypeCaches(ModularState);
+    dart.setLibraryUri(ModularState, I[6]);
+    dart.setFieldSignature(ModularState, () => ({
+      __proto__: dart.getFields(ModularState.__proto__),
+      controller: dart.finalFieldType(dart.legacy(TBind))
+    }));
+    return ModularState;
+  });
+  modular_stateful_widget_state.ModularState = modular_stateful_widget_state.ModularState$();
+  dart.addTypeTests(modular_stateful_widget_state.ModularState, _is_ModularState_default);
+  var controller$0 = dart.privateName(modular_stateful_widget_state, "ModularStateMixin.controller");
+  const _is_ModularStateMixin_default = Symbol('_is_ModularStateMixin_default');
+  modular_stateful_widget_state.ModularStateMixin$ = dart.generic((T, TBind) => {
+    var TBindL = () => (TBindL = dart.constFn(dart.legacy(TBind)))();
+    class ModularStateMixin extends framework.State$(dart.legacy(T)) {}
+    ModularStateMixin[dart.mixinOn] = State => class ModularStateMixin extends State {
+      get controller() {
+        return this[controller$0];
+      }
+      set controller(value) {
+        super.controller = value;
+      }
+      dispose() {
+        super.dispose();
+        modular_base.Modular.dispose(TBindL());
+      }
+    };
+    (ModularStateMixin[dart.mixinNew] = function() {
+      this[controller$0] = modular_base.Modular.get(TBindL());
+    }).prototype = ModularStateMixin.prototype;
+    dart.addTypeTests(ModularStateMixin);
+    ModularStateMixin.prototype[_is_ModularStateMixin_default] = true;
+    dart.addTypeCaches(ModularStateMixin);
+    ModularStateMixin[dart.implements] = () => [framework.State$(dart.legacy(T))];
+    dart.setLibraryUri(ModularStateMixin, I[6]);
+    dart.setFieldSignature(ModularStateMixin, () => ({
+      __proto__: dart.getFields(ModularStateMixin.__proto__),
+      controller: dart.finalFieldType(dart.legacy(TBind))
+    }));
+    return ModularStateMixin;
+  });
+  modular_stateful_widget_state.ModularStateMixin = modular_stateful_widget_state.ModularStateMixin$();
+  dart.addTypeTests(modular_stateful_widget_state.ModularStateMixin, _is_ModularStateMixin_default);
+  var module$1 = dart.privateName(modular_app, "ModularApp.module");
+  var isCupertino$ = dart.privateName(modular_app, "ModularApp.isCupertino");
+  modular_app.ModularApp = class ModularApp extends framework.StatefulWidget {
+    get module() {
+      return this[module$1];
+    }
+    set module(value) {
+      super.module = value;
+    }
+    get isCupertino() {
+      return this[isCupertino$];
+    }
+    set isCupertino(value) {
+      super.isCupertino = value;
+    }
+    createState() {
+      return new modular_app._ModularAppState.new();
+    }
+  };
+  (modular_app.ModularApp.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let module = opts && 'module' in opts ? opts.module : null;
+    let isCupertino = opts && 'isCupertino' in opts ? opts.isCupertino : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[module$1] = module;
+    this[isCupertino$] = isCupertino;
+    modular_app.ModularApp.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    modular_base.Modular.isCupertino = this.isCupertino;
+  }).prototype = modular_app.ModularApp.prototype;
+  dart.addTypeTests(modular_app.ModularApp);
+  dart.addTypeCaches(modular_app.ModularApp);
+  dart.setMethodSignature(modular_app.ModularApp, () => ({
+    __proto__: dart.getMethods(modular_app.ModularApp.__proto__),
+    createState: dart.fnType(dart.legacy(modular_app._ModularAppState), [])
+  }));
+  dart.setLibraryUri(modular_app.ModularApp, I[7]);
+  dart.setFieldSignature(modular_app.ModularApp, () => ({
+    __proto__: dart.getFields(modular_app.ModularApp.__proto__),
+    module: dart.finalFieldType(dart.legacy(main_module.MainModule)),
+    isCupertino: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  modular_app._ModularAppState = class _ModularAppState extends framework.State$(dart.legacy(modular_app.ModularApp)) {
+    initState() {
+      super.initState();
+      modular_base.Modular.init(this.widget.module);
+    }
+    dispose() {
+      this.widget.module.cleanInjects();
+      if (dart.test(modular_base.Modular.debugMode)) {
+        print.debugPrint("-- " + dart.str(dart.toString(dart.runtimeType(this.widget.module))) + " DISPOSED");
+      }
+      super.dispose();
+    }
+    build(context) {
+      return this.widget.module.bootstrap;
+    }
+  };
+  (modular_app._ModularAppState.new = function() {
+    modular_app._ModularAppState.__proto__.new.call(this);
+    ;
+  }).prototype = modular_app._ModularAppState.prototype;
+  dart.addTypeTests(modular_app._ModularAppState);
+  dart.addTypeCaches(modular_app._ModularAppState);
+  dart.setMethodSignature(modular_app._ModularAppState, () => ({
+    __proto__: dart.getMethods(modular_app._ModularAppState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(modular_app._ModularAppState, I[7]);
+  var builder$ = dart.privateName(consumer_widget, "Consumer.builder");
+  var distinct$ = dart.privateName(consumer_widget, "Consumer.distinct");
+  const _is_Consumer_default = Symbol('_is_Consumer_default');
+  consumer_widget.Consumer$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var _ConsumerStateOfTL = () => (_ConsumerStateOfTL = dart.constFn(consumer_widget._ConsumerState$(TL())))();
+    class Consumer extends framework.StatefulWidget {
+      get builder() {
+        return this[builder$];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get distinct() {
+        return this[distinct$];
+      }
+      set distinct(value) {
+        super.distinct = value;
+      }
+      createState() {
+        return new (_ConsumerStateOfTL()).new();
+      }
+    }
+    (Consumer.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let distinct = opts && 'distinct' in opts ? opts.distinct : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[builder$] = builder;
+      this[distinct$] = distinct;
+      Consumer.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = Consumer.prototype;
+    dart.addTypeTests(Consumer);
+    Consumer.prototype[_is_Consumer_default] = true;
+    dart.addTypeCaches(Consumer);
+    dart.setMethodSignature(Consumer, () => ({
+      __proto__: dart.getMethods(Consumer.__proto__),
+      createState: dart.fnType(dart.legacy(consumer_widget._ConsumerState$(dart.legacy(T))), [])
+    }));
+    dart.setLibraryUri(Consumer, I[8]);
+    dart.setFieldSignature(Consumer, () => ({
+      __proto__: dart.getFields(Consumer.__proto__),
+      builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(T)]))),
+      distinct: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(T), dart.legacy(T)])))
+    }));
+    return Consumer;
+  });
+  consumer_widget.Consumer = consumer_widget.Consumer$();
+  dart.addTypeTests(consumer_widget.Consumer, _is_Consumer_default);
+  var value$ = dart.privateName(consumer_widget, "_ConsumerState.value");
+  const _is__ConsumerState_default = Symbol('_is__ConsumerState_default');
+  consumer_widget._ConsumerState$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var TLAndTLToboolL = () => (TLAndTLToboolL = dart.constFn(dart.fnType(T$.boolL(), [TL(), TL()])))();
+    var TLAndTLToLboolL = () => (TLAndTLToLboolL = dart.constFn(dart.legacy(TLAndTLToboolL())))();
+    var VoidToTL = () => (VoidToTL = dart.constFn(dart.fnType(TL(), [])))();
+    var BuildContextLAndTLToWidgetL = () => (BuildContextLAndTLToWidgetL = dart.constFn(dart.fnType(T$.WidgetL(), [T$.BuildContextL(), TL()])))();
+    var BuildContextLAndTLToLWidgetL = () => (BuildContextLAndTLToLWidgetL = dart.constFn(dart.legacy(BuildContextLAndTLToWidgetL())))();
+    class _ConsumerState extends framework.State$(dart.legacy(consumer_widget.Consumer$(dart.legacy(T)))) {
+      get value() {
+        return this[value$];
+      }
+      set value(value) {
+        this[value$] = TL().as(value);
+      }
+      listener() {
+        let t2, t1, t0;
+        let newValue = modular_base.Modular.get(TL());
+        if (TLAndTLToLboolL().as(this.widget.distinct) == null || dart.test((t0 = this.widget, t1 = this.value, t2 = newValue, TLAndTLToLboolL().as(t0.distinct)(t1, t2)))) {
+          this.setState(dart.fn(() => this.value = newValue, VoidToTL()));
+        }
+      }
+      initState() {
+        super.initState();
+        this.value = modular_base.Modular.get(TL());
+        this.value.addListener(dart.bind(this, 'listener'));
+      }
+      dispose() {
+        this.value.removeListener(dart.bind(this, 'listener'));
+        super.dispose();
+      }
+      build(context) {
+        let t2, t1, t0;
+        t0 = this.widget;
+        t1 = context;
+        t2 = this.value;
+        return BuildContextLAndTLToLWidgetL().as(t0.builder)(t1, t2);
+      }
+    }
+    (_ConsumerState.new = function() {
+      this[value$] = null;
+      _ConsumerState.__proto__.new.call(this);
+      ;
+    }).prototype = _ConsumerState.prototype;
+    dart.addTypeTests(_ConsumerState);
+    _ConsumerState.prototype[_is__ConsumerState_default] = true;
+    dart.addTypeCaches(_ConsumerState);
+    dart.setMethodSignature(_ConsumerState, () => ({
+      __proto__: dart.getMethods(_ConsumerState.__proto__),
+      listener: dart.fnType(dart.void, []),
+      build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+    }));
+    dart.setLibraryUri(_ConsumerState, I[8]);
+    dart.setFieldSignature(_ConsumerState, () => ({
+      __proto__: dart.getFields(_ConsumerState.__proto__),
+      value: dart.fieldType(dart.legacy(T))
+    }));
+    return _ConsumerState;
+  });
+  consumer_widget._ConsumerState = consumer_widget._ConsumerState$();
+  dart.addTypeTests(consumer_widget._ConsumerState, _is__ConsumerState_default);
+  var path$ = dart.privateName(route_link, "RouteLink.path");
+  var modulePath$ = dart.privateName(route_link, "RouteLink.modulePath");
+  var _checkpath = dart.privateName(route_link, "_checkpath");
+  route_link.RouteLink = class RouteLink extends modular_navigator_interface.IModularNavigator {
+    get path() {
+      return this[path$];
+    }
+    set path(value) {
+      super.path = value;
+    }
+    get modulePath() {
+      return this[modulePath$];
+    }
+    set modulePath(value) {
+      super.modulePath = value;
+    }
+    copy() {
+      return new route_link.RouteLink.new({path: this.path, modulePath: this.modulePath});
+    }
+    canPop() {
+      return modular_base.Modular.navigator.canPop();
+    }
+    maybePop(T, result = null) {
+      return modular_base.Modular.navigator.maybePop(dart.legacy(T), result);
+    }
+    pop(T, result = null) {
+      return modular_base.Modular.navigator.pop(dart.legacy(T), result);
+    }
+    popAndPushNamed(T, TO, routeName, opts) {
+      let result = opts && 'result' in opts ? opts.result : null;
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return modular_base.Modular.navigator.popAndPushNamed(dart.legacy(T), dart.legacy(TO), this[_checkpath](routeName), {result: result, arguments: $arguments});
+    }
+    popUntil(predicate) {
+      return modular_base.Modular.navigator.popUntil(predicate);
+    }
+    push(T, route) {
+      return modular_base.Modular.navigator.push(dart.legacy(T), route);
+    }
+    pushNamed(T, routeName, opts) {
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return modular_base.Modular.navigator.pushNamed(dart.legacy(T), this[_checkpath](routeName), {arguments: $arguments});
+    }
+    pushNamedAndRemoveUntil(T, newRouteName, predicate, opts) {
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return modular_base.Modular.navigator.pushNamedAndRemoveUntil(dart.legacy(T), this[_checkpath](newRouteName), predicate, {arguments: $arguments});
+    }
+    pushReplacementNamed(T, TO, routeName, opts) {
+      let result = opts && 'result' in opts ? opts.result : null;
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return modular_base.Modular.navigator.pushReplacementNamed(dart.legacy(T), dart.legacy(TO), this[_checkpath](routeName), {result: result, arguments: $arguments});
+    }
+    pushReplacement(T, TO, newRoute, opts) {
+      let result = opts && 'result' in opts ? opts.result : null;
+      return modular_base.Modular.navigator.pushReplacement(dart.legacy(T), dart.legacy(TO), newRoute, {result: result});
+    }
+    showDialog(opts) {
+      let child = opts && 'child' in opts ? opts.child : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let barrierDismissible = opts && 'barrierDismissible' in opts ? opts.barrierDismissible : true;
+      return modular_base.Modular.navigator.showDialog({builder: builder, child: child, barrierDismissible: barrierDismissible});
+    }
+    [_checkpath](routeName) {
+      routeName = routeName[$_get](0) === "/" ? routeName : "/" + dart.str(routeName);
+      let newPath = (dart.str(this.modulePath) + dart.str(routeName))[$replaceAll]("//", "/");
+      return newPath;
+    }
+    get navigator() {
+      return modular_base.Modular.to.navigator;
+    }
+  };
+  (route_link.RouteLink.new = function(opts) {
+    let path = opts && 'path' in opts ? opts.path : null;
+    let modulePath = opts && 'modulePath' in opts ? opts.modulePath : "/";
+    this[path$] = path;
+    this[modulePath$] = modulePath;
+    ;
+  }).prototype = route_link.RouteLink.prototype;
+  dart.addTypeTests(route_link.RouteLink);
+  dart.addTypeCaches(route_link.RouteLink);
+  dart.setMethodSignature(route_link.RouteLink, () => ({
+    __proto__: dart.getMethods(route_link.RouteLink.__proto__),
+    copy: dart.fnType(dart.legacy(route_link.RouteLink), []),
+    canPop: dart.fnType(dart.legacy(core.bool), []),
+    maybePop: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(core.bool))), [], [dart.legacy(T)]]),
+    pop: dart.gFnType(T => [dart.void, [], [dart.legacy(T)]]),
+    popAndPushNamed: dart.gFnType((T, TO) => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String)], {arguments: dart.legacy(core.Object), result: dart.legacy(TO)}, {}]),
+    popUntil: dart.fnType(dart.void, [dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(navigator.Route)]))]),
+    push: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(navigator.Route$(dart.legacy(T)))]]),
+    pushNamed: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String)], {arguments: dart.legacy(core.Object)}, {}]),
+    pushNamedAndRemoveUntil: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String), dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(navigator.Route)]))], {arguments: dart.legacy(core.Object)}, {}]),
+    pushReplacementNamed: dart.gFnType((T, TO) => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String)], {arguments: dart.legacy(core.Object), result: dart.legacy(TO)}, {}]),
+    pushReplacement: dart.gFnType((T, TO) => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(navigator.Route$(dart.legacy(T)))], {result: dart.legacy(TO)}, {}]),
+    showDialog: dart.fnType(dart.legacy(async.Future), [], {barrierDismissible: dart.legacy(core.bool), builder: dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])), child: dart.legacy(framework.Widget)}, {}),
+    [_checkpath]: dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)])
+  }));
+  dart.setGetterSignature(route_link.RouteLink, () => ({
+    __proto__: dart.getGetters(route_link.RouteLink.__proto__),
+    navigator: dart.legacy(navigator.NavigatorState)
+  }));
+  dart.setLibraryUri(route_link.RouteLink, I[9]);
+  dart.setFieldSignature(route_link.RouteLink, () => ({
+    __proto__: dart.getFields(route_link.RouteLink.__proto__),
+    path: dart.finalFieldType(dart.legacy(core.String)),
+    modulePath: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  main_module.MainModule = class MainModule extends child_module.ChildModule {};
+  (main_module.MainModule.new = function() {
+    main_module.MainModule.__proto__.new.call(this);
+    ;
+  }).prototype = main_module.MainModule.prototype;
+  dart.addTypeTests(main_module.MainModule);
+  dart.addTypeCaches(main_module.MainModule);
+  dart.setLibraryUri(main_module.MainModule, I[10]);
+  var navigator$ = dart.privateName(modular_navigator, "ModularNavigator.navigator");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _buildMaterialDialogTransitions = dart.privateName(modular_navigator, "_buildMaterialDialogTransitions");
+  modular_navigator.ModularNavigator = class ModularNavigator extends core.Object {
+    get navigator() {
+      return this[navigator$];
+    }
+    set navigator(value) {
+      super.navigator = value;
+    }
+    showDialog(opts) {
+      let child = opts && 'child' in opts ? opts.child : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let barrierDismissible = opts && 'barrierDismissible' in opts ? opts.barrierDismissible : true;
+      return this.navigator.push(T$.ObjectL(), new (T$.DialogRouteOfObjectL()).new({pageBuilder: dart.fn((buildContext, animation, secondaryAnimation) => {
+          let t0;
+          let pageChild = (t0 = child, t0 == null ? new basic.Builder.new({builder: builder, $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}) : t0);
+          return new safe_area.SafeArea.new({child: new basic.Builder.new({builder: dart.fn(context => pageChild, T$.BuildContextLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+        }, T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToSafeAreaL()), barrierDismissible: barrierDismissible, barrierLabel: "barier-label", barrierColor: colors.Colors.black54, transitionDuration: C[40] || CT.C40, transitionBuilder: dart.bind(this, _buildMaterialDialogTransitions)}));
+    }
+    [_buildMaterialDialogTransitions](context, animation, secondaryAnimation, child) {
+      return new transitions.FadeTransition.new({opacity: new animations.CurvedAnimation.new({parent: animation, curve: curves.Curves.easeOut}), child: child, $creationLocationd_0dea112b090073317d4: C[41] || CT.C41});
+    }
+    canPop() {
+      return this.navigator.canPop();
+    }
+    maybePop(T, result = null) {
+      return this.navigator.maybePop(dart.legacy(T), result);
+    }
+    pop(T, result = null) {
+      return this.navigator.pop(dart.legacy(T), result);
+    }
+    popAndPushNamed(T, TO, routeName, opts) {
+      let result = opts && 'result' in opts ? opts.result : null;
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return this.navigator.popAndPushNamed(dart.legacy(T), dart.legacy(TO), routeName, {result: result, arguments: $arguments});
+    }
+    popUntil(predicate) {
+      return this.navigator.popUntil(predicate);
+    }
+    push(T, route) {
+      return this.navigator.push(dart.legacy(T), route);
+    }
+    pushNamed(T, routeName, opts) {
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return this.navigator.pushNamed(dart.legacy(T), routeName, {arguments: $arguments});
+    }
+    pushNamedAndRemoveUntil(T, newRouteName, predicate, opts) {
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return this.navigator.pushNamedAndRemoveUntil(dart.legacy(T), newRouteName, predicate, {arguments: $arguments});
+    }
+    pushReplacementNamed(T, TO, routeName, opts) {
+      let result = opts && 'result' in opts ? opts.result : null;
+      let $arguments = opts && 'arguments' in opts ? opts.arguments : null;
+      return this.navigator.pushReplacementNamed(dart.legacy(T), dart.legacy(TO), routeName, {result: result, arguments: $arguments});
+    }
+    pushReplacement(T, TO, newRoute, opts) {
+      let result = opts && 'result' in opts ? opts.result : null;
+      return this.navigator.pushReplacement(dart.legacy(T), dart.legacy(TO), newRoute, {result: result});
+    }
+    get modulePath() {
+      return modular_base.Modular.link.modulePath;
+    }
+    get path() {
+      return modular_base.Modular.link.path;
+    }
+  };
+  (modular_navigator.ModularNavigator.new = function(navigator) {
+    this[navigator$] = navigator;
+    ;
+  }).prototype = modular_navigator.ModularNavigator.prototype;
+  dart.addTypeTests(modular_navigator.ModularNavigator);
+  dart.addTypeCaches(modular_navigator.ModularNavigator);
+  modular_navigator.ModularNavigator[dart.implements] = () => [modular_navigator_interface.IModularNavigator];
+  dart.setMethodSignature(modular_navigator.ModularNavigator, () => ({
+    __proto__: dart.getMethods(modular_navigator.ModularNavigator.__proto__),
+    showDialog: dart.fnType(dart.legacy(async.Future), [], {barrierDismissible: dart.legacy(core.bool), builder: dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])), child: dart.legacy(framework.Widget)}, {}),
+    [_buildMaterialDialogTransitions]: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)]),
+    canPop: dart.fnType(dart.legacy(core.bool), []),
+    maybePop: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(core.bool))), [], [dart.legacy(T)]]),
+    pop: dart.gFnType(T => [dart.void, [], [dart.legacy(T)]]),
+    popAndPushNamed: dart.gFnType((T, TO) => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String)], {arguments: dart.legacy(core.Object), result: dart.legacy(TO)}, {}]),
+    popUntil: dart.fnType(dart.void, [dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(navigator.Route)]))]),
+    push: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(navigator.Route$(dart.legacy(T)))]]),
+    pushNamed: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String)], {arguments: dart.legacy(core.Object)}, {}]),
+    pushNamedAndRemoveUntil: dart.gFnType(T => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String), dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(navigator.Route)]))], {arguments: dart.legacy(core.Object)}, {}]),
+    pushReplacementNamed: dart.gFnType((T, TO) => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(core.String)], {arguments: dart.legacy(core.Object), result: dart.legacy(TO)}, {}]),
+    pushReplacement: dart.gFnType((T, TO) => [dart.legacy(async.Future$(dart.legacy(T))), [dart.legacy(navigator.Route$(dart.legacy(T)))], {result: dart.legacy(TO)}, {}])
+  }));
+  dart.setGetterSignature(modular_navigator.ModularNavigator, () => ({
+    __proto__: dart.getGetters(modular_navigator.ModularNavigator.__proto__),
+    modulePath: dart.legacy(core.String),
+    path: dart.legacy(core.String)
+  }));
+  dart.setLibraryUri(modular_navigator.ModularNavigator, I[11]);
+  dart.setFieldSignature(modular_navigator.ModularNavigator, () => ({
+    __proto__: dart.getFields(modular_navigator.ModularNavigator.__proto__),
+    navigator: dart.finalFieldType(dart.legacy(navigator.NavigatorState))
+  }));
+  var Color_value = dart.privateName(ui, "Color.value");
+  var _pageBuilder = dart.privateName(modular_navigator, "_pageBuilder");
+  var _barrierDismissible = dart.privateName(modular_navigator, "_barrierDismissible");
+  var _barrierLabel = dart.privateName(modular_navigator, "_barrierLabel");
+  var _barrierColor = dart.privateName(modular_navigator, "_barrierColor");
+  var _transitionDuration = dart.privateName(modular_navigator, "_transitionDuration");
+  var _transitionBuilder = dart.privateName(modular_navigator, "_transitionBuilder");
+  const _is_DialogRoute_default = Symbol('_is_DialogRoute_default');
+  modular_navigator.DialogRoute$ = dart.generic(T => {
+    class DialogRoute extends routes.PopupRoute$(dart.legacy(T)) {
+      get barrierDismissible() {
+        return this[_barrierDismissible];
+      }
+      get barrierLabel() {
+        return this[_barrierLabel];
+      }
+      get barrierColor() {
+        return this[_barrierColor];
+      }
+      get transitionDuration() {
+        return this[_transitionDuration];
+      }
+      buildPage(context, animation, secondaryAnimation) {
+        let t2, t1, t0;
+        return new basic.Semantics.new({child: (t0 = context, t1 = animation, t2 = secondaryAnimation, this[_pageBuilder](t0, t1, t2)), scopesRoute: true, explicitChildNodes: true, $creationLocationd_0dea112b090073317d4: C[47] || CT.C47});
+      }
+      buildTransitions(context, animation, secondaryAnimation, child) {
+        let t3, t2, t1, t0;
+        if (this[_transitionBuilder] == null) {
+          return new transitions.FadeTransition.new({opacity: new animations.CurvedAnimation.new({parent: animation, curve: curves.Curves.linear}), child: child, $creationLocationd_0dea112b090073317d4: C[52] || CT.C52});
+        }
+        t0 = context;
+        t1 = animation;
+        t2 = secondaryAnimation;
+        t3 = child;
+        return this[_transitionBuilder](t0, t1, t2, t3);
+      }
+    }
+    (DialogRoute.new = function(opts) {
+      let pageBuilder = opts && 'pageBuilder' in opts ? opts.pageBuilder : null;
+      let barrierDismissible = opts && 'barrierDismissible' in opts ? opts.barrierDismissible : true;
+      let barrierLabel = opts && 'barrierLabel' in opts ? opts.barrierLabel : null;
+      let barrierColor = opts && 'barrierColor' in opts ? opts.barrierColor : C[45] || CT.C45;
+      let transitionDuration = opts && 'transitionDuration' in opts ? opts.transitionDuration : C[46] || CT.C46;
+      let transitionBuilder = opts && 'transitionBuilder' in opts ? opts.transitionBuilder : null;
+      let settings = opts && 'settings' in opts ? opts.settings : null;
+      if (!(barrierDismissible != null)) dart.assertFailed(null, I[12], 119, 16, "barrierDismissible != null");
+      this[_pageBuilder] = pageBuilder;
+      this[_barrierDismissible] = barrierDismissible;
+      this[_barrierLabel] = barrierLabel;
+      this[_barrierColor] = barrierColor;
+      this[_transitionDuration] = transitionDuration;
+      this[_transitionBuilder] = transitionBuilder;
+      DialogRoute.__proto__.new.call(this, {settings: settings});
+      ;
+    }).prototype = DialogRoute.prototype;
+    dart.addTypeTests(DialogRoute);
+    DialogRoute.prototype[_is_DialogRoute_default] = true;
+    dart.addTypeCaches(DialogRoute);
+    dart.setMethodSignature(DialogRoute, () => ({
+      __proto__: dart.getMethods(DialogRoute.__proto__),
+      buildPage: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double)))]),
+      buildTransitions: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)])
+    }));
+    dart.setGetterSignature(DialogRoute, () => ({
+      __proto__: dart.getGetters(DialogRoute.__proto__),
+      barrierDismissible: dart.legacy(core.bool),
+      barrierLabel: dart.legacy(core.String),
+      barrierColor: dart.legacy(ui.Color),
+      transitionDuration: dart.legacy(core.Duration)
+    }));
+    dart.setLibraryUri(DialogRoute, I[11]);
+    dart.setFieldSignature(DialogRoute, () => ({
+      __proto__: dart.getFields(DialogRoute.__proto__),
+      [_pageBuilder]: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double)))]))),
+      [_barrierDismissible]: dart.finalFieldType(dart.legacy(core.bool)),
+      [_barrierLabel]: dart.finalFieldType(dart.legacy(core.String)),
+      [_barrierColor]: dart.finalFieldType(dart.legacy(ui.Color)),
+      [_transitionDuration]: dart.finalFieldType(dart.legacy(core.Duration)),
+      [_transitionBuilder]: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)])))
+    }));
+    return DialogRoute;
+  });
+  modular_navigator.DialogRoute = modular_navigator.DialogRoute$();
+  dart.addTypeTests(modular_navigator.DialogRoute, _is_DialogRoute_default);
+  var args$ = dart.privateName(old, "Old.args");
+  var link$ = dart.privateName(old, "Old.link");
+  old.Old = class Old extends core.Object {
+    get args() {
+      return this[args$];
+    }
+    set args(value) {
+      super.args = value;
+    }
+    get link() {
+      return this[link$];
+    }
+    set link(value) {
+      super.link = value;
+    }
+  };
+  (old.Old.new = function(opts) {
+    let args = opts && 'args' in opts ? opts.args : null;
+    let link = opts && 'link' in opts ? opts.link : null;
+    this[args$] = args;
+    this[link$] = link;
+    ;
+  }).prototype = old.Old.prototype;
+  dart.addTypeTests(old.Old);
+  dart.addTypeCaches(old.Old);
+  dart.setLibraryUri(old.Old, I[13]);
+  dart.setFieldSignature(old.Old, () => ({
+    __proto__: dart.getFields(old.Old.__proto__),
+    args: dart.finalFieldType(dart.legacy(modular_base.ModularArguments)),
+    link: dart.finalFieldType(dart.legacy(route_link.RouteLink))
+  }));
+  transitions$.fadeInTransition = function fadeInTransition(T, builder, args, transitionDuration, settings) {
+    return new (pages.PageRouteBuilder$(dart.legacy(T))).new({settings: settings, transitionDuration: transitionDuration, pageBuilder: dart.fn((context, __, ___) => builder(context, args), T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL()), transitionsBuilder: dart.fn((context, animation, secondaryAnimation, child) => new transitions.FadeTransition.new({opacity: animation, child: child, $creationLocationd_0dea112b090073317d4: C[56] || CT.C56}), T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleL__ToFadeTransitionL())});
+  };
+  transitions$.noTransition = function noTransition(T, builder, args, transitionDuration, settings) {
+    return new (pages.PageRouteBuilder$(dart.legacy(T))).new({settings: settings, transitionDuration: transitionDuration, pageBuilder: dart.fn((context, __, ___) => builder(context, args), T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL())});
+  };
+  transitions$.rightToLeft = function rightToLeft(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.rightToLeft});
+  };
+  transitions$.leftToRight = function leftToRight(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.leftToRight});
+  };
+  transitions$.upToDown = function upToDown(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.upToDown});
+  };
+  transitions$.downToUp = function downToUp(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.downToUp});
+  };
+  transitions$.scale = function scale(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.scale});
+  };
+  transitions$.rotate = function rotate(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.rotate});
+  };
+  transitions$.size = function size(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.size});
+  };
+  transitions$.rightToLeftWithFade = function rightToLeftWithFade(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.rightToLeftWithFade});
+  };
+  transitions$.leftToRightWithFade = function leftToRightWithFade(T, builder, args, transitionDuration, settings) {
+    return new (page_transition.PageTransition$(dart.legacy(T))).new({settings: settings, duration: transitionDuration, builder: dart.fn(context => builder(context, args), T$.BuildContextLToWidgetL()), type: page_transition.PageTransitionType.leftToRightWithFade});
+  };
+  var routerName$ = dart.privateName(modular_router, "ModularRouter.routerName");
+  var child$0 = dart.privateName(modular_router, "ModularRouter.child");
+  var module$2 = dart.privateName(modular_router, "ModularRouter.module");
+  var params$ = dart.privateName(modular_router, "ModularRouter.params");
+  var guards$ = dart.privateName(modular_router, "ModularRouter.guards");
+  var transition$ = dart.privateName(modular_router, "ModularRouter.transition");
+  var customTransition$ = dart.privateName(modular_router, "ModularRouter.customTransition");
+  var routeGenerator$ = dart.privateName(modular_router, "ModularRouter.routeGenerator");
+  var modulePath$0 = dart.privateName(modular_router, "ModularRouter.modulePath");
+  var duration$ = dart.privateName(modular_router, "ModularRouter.duration");
+  var _name$ = dart.privateName(modular_router, "_name");
+  var _transitions = dart.privateName(modular_router, "_transitions");
+  var _disposableGenerate = dart.privateName(modular_router, "_disposableGenerate");
+  const _is_ModularRouter_default = Symbol('_is_ModularRouter_default');
+  modular_router.ModularRouter$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var PageRouteBuilderOfTL = () => (PageRouteBuilderOfTL = dart.constFn(pages.PageRouteBuilder$(TL())))();
+    var PageRouteBuilderLOfTL = () => (PageRouteBuilderLOfTL = dart.constFn(dart.legacy(PageRouteBuilderOfTL())))();
+    var FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL = () => (FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL = dart.constFn(dart.fnType(PageRouteBuilderLOfTL(), [T$.BuildContextLAndModularArgumentsLToLWidgetL(), T$.ModularArgumentsL(), T$.DurationL(), T$.RouteSettingsL()])))();
+    var FnAndModularArgumentsLAndDurationL__ToLPageRouteBuilderLOfTL = () => (FnAndModularArgumentsLAndDurationL__ToLPageRouteBuilderLOfTL = dart.constFn(dart.legacy(FnAndModularArgumentsLAndDurationL__ToPageRouteBuilderLOfTL())))();
+    var LinkedMapOfTransitionTypeL$FnAndModularArgumentsLAndDurationL__ToLPageRouteBuilderLOfTL = () => (LinkedMapOfTransitionTypeL$FnAndModularArgumentsLAndDurationL__ToLPageRouteBuilderLOfTL = dart.constFn(_js_helper.LinkedMap$(T$.TransitionTypeL(), FnAndModularArgumentsLAndDurationL__ToLPageRouteBuilderLOfTL())))();
+    var ModularRouterOfTL = () => (ModularRouterOfTL = dart.constFn(modular_router.ModularRouter$(TL())))();
+    var MaterialPageRouteOfTL = () => (MaterialPageRouteOfTL = dart.constFn(page.MaterialPageRoute$(TL())))();
+    var MaterialPageRouteLOfTL = () => (MaterialPageRouteLOfTL = dart.constFn(dart.legacy(MaterialPageRouteOfTL())))();
+    var FnAndRouteSettingsLToMaterialPageRouteLOfTL = () => (FnAndRouteSettingsLToMaterialPageRouteLOfTL = dart.constFn(dart.fnType(MaterialPageRouteLOfTL(), [T$.BuildContextLToLWidgetL(), T$.RouteSettingsL()])))();
+    var FnAndRouteSettingsLToLMaterialPageRouteLOfTL = () => (FnAndRouteSettingsLToLMaterialPageRouteLOfTL = dart.constFn(dart.legacy(FnAndRouteSettingsLToMaterialPageRouteLOfTL())))();
+    var CupertinoPageRouteOfTL = () => (CupertinoPageRouteOfTL = dart.constFn(route.CupertinoPageRoute$(TL())))();
+    class ModularRouter extends core.Object {
+      get routerName() {
+        return this[routerName$];
+      }
+      set routerName(value) {
+        super.routerName = value;
+      }
+      get child() {
+        return this[child$0];
+      }
+      set child(value) {
+        super.child = value;
+      }
+      get module() {
+        return this[module$2];
+      }
+      set module(value) {
+        super.module = value;
+      }
+      get params() {
+        return this[params$];
+      }
+      set params(value) {
+        this[params$] = value;
+      }
+      get guards() {
+        return this[guards$];
+      }
+      set guards(value) {
+        super.guards = value;
+      }
+      get transition() {
+        return this[transition$];
+      }
+      set transition(value) {
+        super.transition = value;
+      }
+      get customTransition() {
+        return this[customTransition$];
+      }
+      set customTransition(value) {
+        super.customTransition = value;
+      }
+      get routeGenerator() {
+        return this[routeGenerator$];
+      }
+      set routeGenerator(value) {
+        super.routeGenerator = value;
+      }
+      get modulePath() {
+        return this[modulePath$0];
+      }
+      set modulePath(value) {
+        super.modulePath = value;
+      }
+      get duration() {
+        return this[duration$];
+      }
+      set duration(value) {
+        super.duration = value;
+      }
+      copyWith(opts) {
+        let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7;
+        let child = opts && 'child' in opts ? opts.child : null;
+        let routerName = opts && 'routerName' in opts ? opts.routerName : null;
+        let module = opts && 'module' in opts ? opts.module : null;
+        let params = opts && 'params' in opts ? opts.params : null;
+        let guards = opts && 'guards' in opts ? opts.guards : null;
+        let transition = opts && 'transition' in opts ? opts.transition : null;
+        let routeGenerator = opts && 'routeGenerator' in opts ? opts.routeGenerator : null;
+        let modulePath = opts && 'modulePath' in opts ? opts.modulePath : null;
+        let duration = opts && 'duration' in opts ? opts.duration : null;
+        let customTransition = opts && 'customTransition' in opts ? opts.customTransition : null;
+        return new (ModularRouterOfTL()).new((t0 = routerName, t0 == null ? this.routerName : t0), {child: (t0$ = child, t0$ == null ? this.child : t0$), module: (t0$0 = module, t0$0 == null ? this.module : t0$0), params: (t0$1 = params, t0$1 == null ? this.params : t0$1), modulePath: (t0$2 = modulePath, t0$2 == null ? this.modulePath : t0$2), guards: (t0$3 = guards, t0$3 == null ? this.guards : t0$3), duration: T$.DurationL().as((t0$4 = duration, t0$4 == null ? this.duration : t0$4)), routeGenerator: FnAndRouteSettingsLToLMaterialPageRouteLOfTL().as((t0$5 = routeGenerator, t0$5 == null ? this.routeGenerator : t0$5)), transition: (t0$6 = transition, t0$6 == null ? this.transition : t0$6), customTransition: (t0$7 = customTransition, t0$7 == null ? this.customTransition : t0$7)});
+      }
+      static group(opts) {
+        let routes = opts && 'routes' in opts ? opts.routes : null;
+        let guards = opts && 'guards' in opts ? opts.guards : null;
+        let transition = opts && 'transition' in opts ? opts.transition : null;
+        let customTransition = opts && 'customTransition' in opts ? opts.customTransition : null;
+        return routes[$map](T$.ModularRouterL(), dart.fn(r => {
+          let t0, t0$;
+          return r.copyWith({guards: guards, transition: (t0 = transition, t0 == null ? r.transition : t0), customTransition: (t0$ = customTransition, t0$ == null ? r.customTransition : t0$)});
+        }, T$.ModularRouterLToModularRouterL()))[$toList]();
+      }
+      [_disposableGenerate](opts) {
+        let injectMap = opts && 'injectMap' in opts ? opts.injectMap : null;
+        let isRouterOutlet = opts && 'isRouterOutlet' in opts ? opts.isRouterOutlet : null;
+        let path = opts && 'path' in opts ? opts.path : null;
+        let page = new modular_router._DisposableWidget.new({child: this.child, dispose: dart.fn((old, actual) => {
+            let trash = T$.JSArrayOfStringL().of([]);
+            if (!dart.test(isRouterOutlet)) {
+              modular_base.Modular.oldProccess(old);
+              modular_base.Modular.updateCurrentModuleApp();
+            }
+            if (dart.test(actual.isCurrent)) {
+              return;
+            }
+            injectMap[$forEach](dart.fn((key, module) => {
+              module.paths[$remove](path);
+              if (module.paths[$length] === 0) {
+                module.cleanInjects();
+                trash[$add](key);
+                modular_router._debugPrintModular("-- " + dart.str(dart.toString(dart.runtimeType(module))) + " DISPOSED");
+              }
+            }, T$.StringLAndChildModuleLToNull()));
+            for (let key of trash) {
+              injectMap[$remove](key);
+            }
+          }, T$.OldLAndModalRouteLToNull()), $creationLocationd_0dea112b090073317d4: C[73] || CT.C73});
+        return page;
+      }
+      getPageRoute(opts) {
+        let t1, t0;
+        let injectMap = opts && 'injectMap' in opts ? opts.injectMap : null;
+        let settings = opts && 'settings' in opts ? opts.settings : null;
+        let isRouterOutlet = opts && 'isRouterOutlet' in opts ? opts.isRouterOutlet : null;
+        let disposablePage = this[_disposableGenerate]({injectMap: injectMap, path: settings.name, isRouterOutlet: isRouterOutlet});
+        if (this.transition == modular_router.TransitionType.custom && this.customTransition != null) {
+          return new (PageRouteBuilderOfTL()).new({pageBuilder: dart.fn((context, _, __) => disposablePage, T$.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL()), settings: settings, transitionsBuilder: this.customTransition.transitionBuilder, transitionDuration: this.customTransition.transitionDuration});
+        } else if (this.transition == modular_router.TransitionType.defaultTransition) {
+          function widgetBuilder(context) {
+            return disposablePage;
+          }
+          dart.fn(widgetBuilder, T$.BuildContextLToWidgetL());
+          if (this.routeGenerator != null) {
+            t0 = widgetBuilder;
+            t1 = settings;
+            return this.routeGenerator(t0, t1);
+          }
+          return dart.test(modular_base.Modular.isCupertino) ? new (CupertinoPageRouteOfTL()).new({settings: settings, builder: widgetBuilder}) : new (MaterialPageRouteOfTL()).new({settings: settings, builder: widgetBuilder});
+        } else {
+          let selectTransition = this[_transitions][$_get](this.transition);
+          return selectTransition(dart.fn((context, args) => disposablePage, T$.BuildContextLAndModularArgumentsLToWidgetL()), modular_base.Modular.args, this.duration, settings);
+        }
+      }
+    }
+    (ModularRouter.new = function(routerName, opts) {
+      let module = opts && 'module' in opts ? opts.module : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let guards = opts && 'guards' in opts ? opts.guards : null;
+      let params = opts && 'params' in opts ? opts.params : null;
+      let transition = opts && 'transition' in opts ? opts.transition : C[60] || CT.C60;
+      let routeGenerator = opts && 'routeGenerator' in opts ? opts.routeGenerator : null;
+      let customTransition = opts && 'customTransition' in opts ? opts.customTransition : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C[61] || CT.C61;
+      let modulePath = opts && 'modulePath' in opts ? opts.modulePath : null;
+      this[_transitions] = new (LinkedMapOfTransitionTypeL$FnAndModularArgumentsLAndDurationL__ToLPageRouteBuilderLOfTL()).from([modular_router.TransitionType.fadeIn, dart.gbind(C[62] || CT.C62, TL()), modular_router.TransitionType.noTransition, dart.gbind(C[63] || CT.C63, TL()), modular_router.TransitionType.rightToLeft, dart.gbind(C[64] || CT.C64, TL()), modular_router.TransitionType.leftToRight, dart.gbind(C[65] || CT.C65, TL()), modular_router.TransitionType.upToDown, dart.gbind(C[66] || CT.C66, TL()), modular_router.TransitionType.downToUp, dart.gbind(C[67] || CT.C67, TL()), modular_router.TransitionType.scale, dart.gbind(C[68] || CT.C68, TL()), modular_router.TransitionType.rotate, dart.gbind(C[69] || CT.C69, TL()), modular_router.TransitionType.size, dart.gbind(C[70] || CT.C70, TL()), modular_router.TransitionType.rightToLeftWithFade, dart.gbind(C[71] || CT.C71, TL()), modular_router.TransitionType.leftToRightWithFade, dart.gbind(C[72] || CT.C72, TL())]);
+      this[routerName$] = routerName;
+      this[module$2] = module;
+      this[child$0] = child;
+      this[guards$] = guards;
+      this[params$] = params;
+      this[transition$] = transition;
+      this[routeGenerator$] = routeGenerator;
+      this[customTransition$] = customTransition;
+      this[duration$] = duration;
+      this[modulePath$0] = modulePath;
+      if (!(this.routerName != null)) dart.assertFailed(null, I[14], 189, 12, "routerName != null");
+      if (this.transition == null) dart.throw(new core.ArgumentError.new("transition must not be null"));
+      if (this.transition == modular_router.TransitionType.custom && this.customTransition == null) {
+        dart.throw(new core.ArgumentError.new("[customTransition] required for transition type [TransitionType.custom]"));
+      }
+      if (this.module == null && this.child == null) {
+        dart.throw(new core.ArgumentError.new("[module] or [child] must be provided"));
+      }
+      if (this.module != null && this.child != null) {
+        dart.throw(new core.ArgumentError.new("You should provide only [module] or [child]"));
+      }
+    }).prototype = ModularRouter.prototype;
+    dart.addTypeTests(ModularRouter);
+    ModularRouter.prototype[_is_ModularRouter_default] = true;
+    dart.addTypeCaches(ModularRouter);
+    dart.setMethodSignature(ModularRouter, () => ({
+      __proto__: dart.getMethods(ModularRouter.__proto__),
+      copyWith: dart.fnType(dart.legacy(modular_router.ModularRouter$(dart.legacy(T))), [], {child: dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(modular_base.ModularArguments)])), customTransition: dart.legacy(modular_router.CustomTransition), duration: dart.legacy(core.String), guards: dart.legacy(core.List$(dart.legacy(route_guard.RouteGuard))), module: dart.legacy(child_module.ChildModule), modulePath: dart.legacy(core.String), params: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String))), routeGenerator: dart.legacy(dart.fnType(dart.legacy(page.MaterialPageRoute), [dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])), dart.legacy(navigator.RouteSettings)])), routerName: dart.legacy(core.String), transition: dart.legacy(modular_router.TransitionType)}, {}),
+      [_disposableGenerate]: dart.fnType(dart.legacy(framework.Widget), [], {injectMap: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(child_module.ChildModule))), isRouterOutlet: dart.legacy(core.bool), path: dart.legacy(core.String)}, {}),
+      getPageRoute: dart.fnType(dart.legacy(navigator.Route$(dart.legacy(T))), [], {injectMap: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(child_module.ChildModule))), isRouterOutlet: dart.legacy(core.bool), settings: dart.legacy(navigator.RouteSettings)}, {})
+    }));
+    dart.setLibraryUri(ModularRouter, I[15]);
+    dart.setFieldSignature(ModularRouter, () => ({
+      __proto__: dart.getFields(ModularRouter.__proto__),
+      routerName: dart.finalFieldType(dart.legacy(core.String)),
+      child: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(modular_base.ModularArguments)]))),
+      module: dart.finalFieldType(dart.legacy(child_module.ChildModule)),
+      params: dart.fieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))),
+      guards: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(route_guard.RouteGuard)))),
+      transition: dart.finalFieldType(dart.legacy(modular_router.TransitionType)),
+      customTransition: dart.finalFieldType(dart.legacy(modular_router.CustomTransition)),
+      routeGenerator: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(page.MaterialPageRoute$(dart.legacy(T))), [dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])), dart.legacy(navigator.RouteSettings)]))),
+      modulePath: dart.finalFieldType(dart.legacy(core.String)),
+      duration: dart.finalFieldType(dart.legacy(core.Duration)),
+      [_transitions]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(modular_router.TransitionType), dart.legacy(dart.fnType(dart.legacy(pages.PageRouteBuilder$(dart.legacy(T))), [dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(modular_base.ModularArguments)])), dart.legacy(modular_base.ModularArguments), dart.legacy(core.Duration), dart.legacy(navigator.RouteSettings)])))))
+    }));
+    return ModularRouter;
+  });
+  modular_router.ModularRouter = modular_router.ModularRouter$();
+  dart.addTypeTests(modular_router.ModularRouter, _is_ModularRouter_default);
+  modular_router.TransitionType = class TransitionType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (modular_router.TransitionType.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = modular_router.TransitionType.prototype;
+  dart.addTypeTests(modular_router.TransitionType);
+  dart.addTypeCaches(modular_router.TransitionType);
+  dart.setMethodSignature(modular_router.TransitionType, () => ({
+    __proto__: dart.getMethods(modular_router.TransitionType.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(modular_router.TransitionType, I[15]);
+  dart.setFieldSignature(modular_router.TransitionType, () => ({
+    __proto__: dart.getFields(modular_router.TransitionType.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(modular_router.TransitionType, ['toString']);
+  modular_router.TransitionType.defaultTransition = C[60] || CT.C60;
+  modular_router.TransitionType.fadeIn = C[77] || CT.C77;
+  modular_router.TransitionType.noTransition = C[78] || CT.C78;
+  modular_router.TransitionType.rightToLeft = C[79] || CT.C79;
+  modular_router.TransitionType.leftToRight = C[80] || CT.C80;
+  modular_router.TransitionType.upToDown = C[81] || CT.C81;
+  modular_router.TransitionType.downToUp = C[82] || CT.C82;
+  modular_router.TransitionType.scale = C[83] || CT.C83;
+  modular_router.TransitionType.rotate = C[84] || CT.C84;
+  modular_router.TransitionType.size = C[85] || CT.C85;
+  modular_router.TransitionType.rightToLeftWithFade = C[86] || CT.C86;
+  modular_router.TransitionType.leftToRightWithFade = C[87] || CT.C87;
+  modular_router.TransitionType.custom = C[88] || CT.C88;
+  modular_router.TransitionType.values = C[89] || CT.C89;
+  var transitionBuilder$ = dart.privateName(modular_router, "CustomTransition.transitionBuilder");
+  var transitionDuration$ = dart.privateName(modular_router, "CustomTransition.transitionDuration");
+  modular_router.CustomTransition = class CustomTransition extends core.Object {
+    get transitionBuilder() {
+      return this[transitionBuilder$];
+    }
+    set transitionBuilder(value) {
+      super.transitionBuilder = value;
+    }
+    get transitionDuration() {
+      return this[transitionDuration$];
+    }
+    set transitionDuration(value) {
+      super.transitionDuration = value;
+    }
+  };
+  (modular_router.CustomTransition.new = function(opts) {
+    let transitionBuilder = opts && 'transitionBuilder' in opts ? opts.transitionBuilder : null;
+    let transitionDuration = opts && 'transitionDuration' in opts ? opts.transitionDuration : C[61] || CT.C61;
+    this[transitionBuilder$] = transitionBuilder;
+    this[transitionDuration$] = transitionDuration;
+    ;
+  }).prototype = modular_router.CustomTransition.prototype;
+  dart.addTypeTests(modular_router.CustomTransition);
+  dart.addTypeCaches(modular_router.CustomTransition);
+  dart.setLibraryUri(modular_router.CustomTransition, I[15]);
+  dart.setFieldSignature(modular_router.CustomTransition, () => ({
+    __proto__: dart.getFields(modular_router.CustomTransition.__proto__),
+    transitionBuilder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)]))),
+    transitionDuration: dart.finalFieldType(dart.legacy(core.Duration))
+  }));
+  modular_router._DisposableWidget = class _DisposableWidget extends framework.StatefulWidget {
+    createState() {
+      return new modular_router.__DisposableWidgetState.new();
+    }
+  };
+  (modular_router._DisposableWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let dispose = opts && 'dispose' in opts ? opts.dispose : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this.dispose = dispose;
+    this.child = child;
+    modular_router._DisposableWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = modular_router._DisposableWidget.prototype;
+  dart.addTypeTests(modular_router._DisposableWidget);
+  dart.addTypeCaches(modular_router._DisposableWidget);
+  dart.setMethodSignature(modular_router._DisposableWidget, () => ({
+    __proto__: dart.getMethods(modular_router._DisposableWidget.__proto__),
+    createState: dart.fnType(dart.legacy(modular_router.__DisposableWidgetState), [])
+  }));
+  dart.setLibraryUri(modular_router._DisposableWidget, I[15]);
+  dart.setFieldSignature(modular_router._DisposableWidget, () => ({
+    __proto__: dart.getFields(modular_router._DisposableWidget.__proto__),
+    dispose: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(old.Old), dart.legacy(routes.ModalRoute)]))),
+    child: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(modular_base.ModularArguments)])))
+  }));
+  modular_router.__DisposableWidgetState = class __DisposableWidgetState extends framework.State$(dart.legacy(modular_router._DisposableWidget)) {
+    initState() {
+      super.initState();
+      this.old = modular_base.Modular.old;
+      this.args = modular_base.Modular.args;
+    }
+    didChangeDependencies() {
+      super.didChangeDependencies();
+      this.actual = routes.ModalRoute.of(T$.ObjectL(), this.context);
+    }
+    dispose() {
+      let t2, t1, t0;
+      t0 = this.widget;
+      t1 = this.old;
+      t2 = this.actual;
+      t0.dispose(t1, t2);
+      super.dispose();
+    }
+    build(context) {
+      let t2, t1, t0;
+      t0 = this.widget;
+      t1 = context;
+      t2 = this.args;
+      return t0.child(t1, t2);
+    }
+  };
+  (modular_router.__DisposableWidgetState.new = function() {
+    this.old = null;
+    this.actual = null;
+    this.args = null;
+    modular_router.__DisposableWidgetState.__proto__.new.call(this);
+    ;
+  }).prototype = modular_router.__DisposableWidgetState.prototype;
+  dart.addTypeTests(modular_router.__DisposableWidgetState);
+  dart.addTypeCaches(modular_router.__DisposableWidgetState);
+  dart.setMethodSignature(modular_router.__DisposableWidgetState, () => ({
+    __proto__: dart.getMethods(modular_router.__DisposableWidgetState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(modular_router.__DisposableWidgetState, I[15]);
+  dart.setFieldSignature(modular_router.__DisposableWidgetState, () => ({
+    __proto__: dart.getFields(modular_router.__DisposableWidgetState.__proto__),
+    old: dart.fieldType(dart.legacy(old.Old)),
+    actual: dart.fieldType(dart.legacy(routes.ModalRoute)),
+    args: dart.fieldType(dart.legacy(modular_base.ModularArguments))
+  }));
+  modular_router._debugPrintModular = function _debugPrintModular$(text) {
+    if (dart.test(modular_base.Modular.debugMode)) {
+      print.debugPrint(text);
+    }
+  };
+  modular_base.ModularNavigatorObserver = class ModularNavigatorObserver extends navigator.NavigatorObserver {
+    didPop(route, previousRoute) {
+      modular_base.Modular._navigators[$forEach](dart.fn((key, value) => {
+        if (value.currentState != null && key != null) {
+        }
+      }, T$.StringLAndGlobalKeyLOfNavigatorStateLToNull()));
+      super.didPop(route, previousRoute);
+    }
+  };
+  (modular_base.ModularNavigatorObserver.new = function() {
+    modular_base.ModularNavigatorObserver.__proto__.new.call(this);
+    ;
+  }).prototype = modular_base.ModularNavigatorObserver.prototype;
+  dart.addTypeTests(modular_base.ModularNavigatorObserver);
+  dart.addTypeCaches(modular_base.ModularNavigatorObserver);
+  dart.setMethodSignature(modular_base.ModularNavigatorObserver, () => ({
+    __proto__: dart.getMethods(modular_base.ModularNavigatorObserver.__proto__),
+    didPop: dart.fnType(dart.void, [dart.legacy(navigator.Route), dart.legacy(navigator.Route)])
+  }));
+  dart.setLibraryUri(modular_base.ModularNavigatorObserver, I[16]);
+  modular_base.Modular = class Modular extends core.Object {
+    static get old() {
+      return modular_base.Modular._old;
+    }
+    static get args() {
+      let t0;
+      t0 = modular_base.Modular._args;
+      return t0 == null ? null : t0.copy();
+    }
+    static get link() {
+      let t1, t0;
+      if (modular_base.Modular.navigatorDelegate == null) {
+        if (!(modular_base.Modular._navigators[$containsKey]("app") === true)) dart.assertFailed("Add Modular.navigatorKey in your MaterialApp;\n\n      return MaterialApp(\n        navigatorKey: Modular.navigatorKey,\n        ...\n\n.\n      ", I[17], 51, 14, "_navigators.containsKey('app') == true");
+      }
+      t0 = modular_base.Modular.navigatorDelegate;
+      return t0 == null ? (t1 = modular_base.Modular._routeLink, t1 == null ? null : t1.copy()) : t0;
+    }
+    static get navigator() {
+      return new modular_navigator.ModularNavigator.new(modular_base.Modular._navigators[$_get](modular_base.Modular.currentModule[$last]).currentState);
+    }
+    static outletNavigatorKey(path) {
+      if (!dart.test(modular_base.Modular._navigators[$containsKey](path))) {
+        modular_base.Modular._navigators[$addAll](new (T$.IdentityMapOfStringL$GlobalKeyLOfNavigatorStateL()).from([path, T$.GlobalKeyOfNavigatorStateL().new()]));
+      }
+      return modular_base.Modular._navigators[$_get](path);
+    }
+    static removeOutletNavigatorKey(path) {
+      if (dart.test(modular_base.Modular._navigators[$containsKey](path))) {
+        modular_base.Modular._navigators[$remove](path);
+      }
+    }
+    static updateCurrentModuleApp() {
+      if (dart.test(modular_base.Modular.currentModule[$contains]("app"))) {
+        modular_base.Modular.currentModule[$remove]("app");
+      }
+      modular_base.Modular.currentModule[$insert](0, "app");
+    }
+    static updateCurrentModule(name) {
+      if (dart.test(modular_base.Modular.currentModule[$contains](name))) {
+        modular_base.Modular.currentModule[$remove](name);
+      }
+      modular_base.Modular.currentModule[$add](name);
+    }
+    static get to() {
+      let t0;
+      if (modular_base.Modular.navigatorDelegate == null) {
+        if (!(modular_base.Modular._navigators[$containsKey]("app") === true)) dart.assertFailed("Add Modular.navigatorKey in your MaterialApp;\n\n      return MaterialApp(\n        navigatorKey: Modular.navigatorKey,\n        ...\n\n\n      ", I[17], 109, 14, "_navigators.containsKey('app') == true");
+      }
+      t0 = modular_base.Modular.navigatorDelegate;
+      return t0 == null ? new modular_navigator.ModularNavigator.new(modular_base.Modular._navigators[$_get]("app").currentState) : t0;
+    }
+    static arguments(opts) {
+      let t0;
+      let params = opts && 'params' in opts ? opts.params : null;
+      let data = opts && 'data' in opts ? opts.data : null;
+      modular_base.Modular._args = new modular_base.ModularArguments.new((t0 = params, t0 == null ? new (T$.IdentityMapOfStringL$dynamic()).new() : t0), data);
+    }
+    static get navigatorKey() {
+      if (!dart.test(modular_base.Modular._navigators[$containsKey]("app"))) {
+        modular_base.Modular._navigators[$addAll](new (T$.IdentityMapOfStringL$GlobalKeyLOfNavigatorStateL()).from(["app", T$.GlobalKeyOfNavigatorStateL().new()]));
+        if (!dart.test(modular_base.Modular.currentModule[$contains]("app"))) {
+          modular_base.Modular.currentModule[$add]("app");
+        }
+      }
+      return modular_base.Modular._navigators[$_get]("app");
+    }
+    static init(module) {
+      modular_base.Modular._initialModule = module;
+      modular_base.Modular.bindModule(module, "global==");
+    }
+    static bindModule(module, path = null) {
+      if (!(module != null)) dart.assertFailed(null, I[17], 145, 12, "module != null");
+      let name = dart.toString(dart.runtimeType(module));
+      if (!dart.test(modular_base.Modular._injectMap[$containsKey](name))) {
+        module.paths[$add](path);
+        modular_base.Modular._injectMap[$_set](name, module);
+        module.instance();
+        modular_base._debugPrintModular("-- " + dart.str(dart.toString(dart.runtimeType(module))) + " INITIALIZED");
+      } else {
+        modular_base.Modular._injectMap[$_get](name).paths[$add](path);
+      }
+    }
+    static removeModule(module, name = null) {
+      name == null ? name = dart.toString(dart.runtimeType(module)) : null;
+      if (dart.test(modular_base.Modular._injectMap[$containsKey](name))) {
+        modular_base.Modular._injectMap[$_get](name).cleanInjects();
+        modular_base.Modular._injectMap[$remove](name);
+        if (dart.test(modular_base.Modular._navigators[$containsKey](name))) {
+          modular_base.Modular._navigators[$remove](name);
+          modular_base.Modular.currentModule[$remove](name);
+        }
+      }
+    }
+    static get(B, opts) {
+      let params = opts && 'params' in opts ? opts.params : null;
+      let module = opts && 'module' in opts ? opts.module : null;
+      let typesInRequest = opts && 'typesInRequest' in opts ? opts.typesInRequest : null;
+      let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : null;
+      if (dart.wrapType(dart.legacy(B)).toString() === "dynamic") {
+        dart.throw(new modular_error.ModularError.new("not allow for dynamic values"));
+      }
+      typesInRequest == null ? typesInRequest = T$.JSArrayOfTypeL().of([]) : null;
+      if (module != null) {
+        return modular_base.Modular._getInjectableObject(dart.legacy(B), module, {params: params, typesInRequest: typesInRequest});
+      }
+      for (let key of modular_base.Modular._injectMap[$keys]) {
+        let value = modular_base.Modular._getInjectableObject(dart.legacy(B), key, {params: params, disableError: true, typesInRequest: typesInRequest, checkKey: false});
+        if (value != null) {
+          return value;
+        }
+      }
+      if (defaultValue != null) {
+        return defaultValue;
+      }
+      dart.throw(new modular_error.ModularError.new(dart.str(dart.wrapType(dart.legacy(B)).toString()) + " not found"));
+    }
+    static _getInjectableObject(B, tag, opts) {
+      let params = opts && 'params' in opts ? opts.params : null;
+      let disableError = opts && 'disableError' in opts ? opts.disableError : false;
+      let typesInRequest = opts && 'typesInRequest' in opts ? opts.typesInRequest : null;
+      let checkKey = opts && 'checkKey' in opts ? opts.checkKey : true;
+      let value = null;
+      if (!dart.test(checkKey)) {
+        value = modular_base.Modular._injectMap[$_get](tag).getBind(dart.legacy(B), params, {typesInRequest: typesInRequest});
+      } else if (dart.test(modular_base.Modular._injectMap[$containsKey](tag))) {
+        value = modular_base.Modular._injectMap[$_get](tag).getBind(dart.legacy(B), params, {typesInRequest: typesInRequest});
+      }
+      if (value == null && !dart.test(disableError)) {
+        dart.throw(new modular_error.ModularError.new(dart.str(dart.wrapType(dart.legacy(B)).toString()) + " not found in module " + dart.str(tag)));
+      }
+      return value;
+    }
+    static dispose(B, module = null) {
+      if (dart.wrapType(dart.legacy(B)).toString() === "dynamic") {
+        dart.throw(new modular_error.ModularError.new("not allow for dynamic values"));
+      }
+      if (module != null) {
+        modular_base.Modular._removeInjectableObject(dart.dynamic, module);
+      } else {
+        for (let key of modular_base.Modular._injectMap[$keys]) {
+          if (dart.test(modular_base.Modular._removeInjectableObject(dart.legacy(B), key))) {
+            break;
+          }
+        }
+      }
+    }
+    static _removeInjectableObject(B, tag) {
+      return modular_base.Modular._injectMap[$_get](tag).remove(dart.legacy(B));
+    }
+    static prepareToRegex(url) {
+      let newUrl = T$.JSArrayOfStringL().of([]);
+      for (let part of url[$split]("/")) {
+        let url = part[$contains](":") ? "(.*?)" : part;
+        newUrl[$add](url);
+      }
+      return newUrl[$join]("/");
+    }
+    static convertType(value) {
+      if (core.int.tryParse(value) != null) {
+        return core.int.parse(value);
+      } else if (core.double.tryParse(value) != null) {
+        return core.double.parse(value);
+      } else if (value[$toLowerCase]() === "true") {
+        return true;
+      } else if (value[$toLowerCase]() === "false") {
+        return false;
+      }
+      return value;
+    }
+    static searchRoute(router, routeNamed, path) {
+      if (routeNamed[$split]("/")[$length] != path[$split]("/")[$length]) {
+        return false;
+      }
+      if (routeNamed[$contains]("/:")) {
+        let regExp = core.RegExp.new("^" + dart.str(modular_base.Modular.prepareToRegex(routeNamed)) + "$", {caseSensitive: true});
+        let r = regExp.firstMatch(path);
+        if (r != null) {
+          let params = new (T$.IdentityMapOfStringL$StringL()).new();
+          let paramPos = 0;
+          let routeParts = routeNamed[$split]("/");
+          let pathParts = path[$split]("/");
+          for (let routePart of routeParts) {
+            if (routePart[$contains](":")) {
+              let paramName = routePart[$replaceFirst](":", "");
+              if (pathParts[$_get](paramPos)[$isNotEmpty]) {
+                params[$_set](paramName, pathParts[$_get](paramPos));
+                routeNamed = routeNamed[$replaceFirst](routePart, params[$_get](paramName));
+              }
+            }
+            paramPos = paramPos + 1;
+          }
+          if (routeNamed != path) {
+            router.params = null;
+            return false;
+          }
+          router.params = params;
+          return true;
+        }
+        router.params = null;
+        return false;
+      }
+      return routeNamed == path;
+    }
+    static _verifyGuard(guards, path) {
+      let t0;
+      let guard = null;
+      let realGuards = (t0 = guards, t0 == null ? T$.JSArrayOfRouteGuardL().of([]) : t0);
+      guard = realGuards[$length] === 0 ? null : guards[$firstWhere](dart.fn(guard => !dart.test(guard.canActivate(path)), T$.RouteGuardLToboolL()), {orElse: dart.fn(() => null, T$.VoidToNull())});
+      realGuards[$expand](T$.GuardExecutorL(), dart.fn(c => c.executors, T$.RouteGuardLToListLOfGuardExecutorL()))[$forEach](dart.fn(c => c.onGuarded(path, {isActive: guard == null}), T$.GuardExecutorLTovoid()));
+      if (guard != null) {
+        dart.throw(new modular_error.ModularError.new("Path guarded : " + dart.str(path)));
+      }
+      return guard;
+    }
+    static _searchInModule(module, routerName, path) {
+      path = ("/" + dart.str(path))[$replaceAll]("//", "/");
+      let routers = module.routers;
+      routers[$sort](dart.fn((preview, actual) => preview.routerName[$contains]("/:") ? 1 : 0, T$.ModularRouterLAndModularRouterLTointL()));
+      for (let route of routers) {
+        let tempRouteName = (dart.notNull(routerName) + dart.notNull(route.routerName))[$replaceFirst]("//", "/");
+        if (route.child == null) {
+          modular_base.Modular._masterRouteGuards = route.guards;
+          let _routerName = (dart.str(routerName) + dart.str(route.routerName) + "/")[$replaceFirst]("//", "/");
+          let router = null;
+          if (_routerName === path || _routerName === dart.str(path) + "/") {
+            let guard = modular_base.Modular._verifyGuard(route.guards, path);
+            if (guard != null) {
+              return null;
+            }
+            router = route.module.routers[$_get](0);
+            if (router.module != null) {
+              let _routerName = (dart.notNull(routerName) + dart.notNull(route.routerName))[$replaceFirst]("//", "/");
+              router = modular_base.Modular._searchInModule(route.module, _routerName, path);
+            }
+          } else {
+            router = modular_base.Modular._searchInModule(route.module, _routerName, path);
+          }
+          if (router != null) {
+            router = router.modulePath == null ? router.copyWith({modulePath: tempRouteName}) : router;
+            if (_routerName === path || _routerName === dart.str(path) + "/") {
+              let guard = modular_base.Modular._verifyGuard(router.guards, path);
+              if (guard != null) {
+                return null;
+              }
+            }
+            if (router.transition == modular_router.TransitionType.defaultTransition) {
+              router = router.copyWith({transition: route.transition, customTransition: route.customTransition});
+            }
+            modular_base.Modular.bindModule(route.module, path);
+            return router;
+          }
+        } else {
+          if (dart.test(modular_base.Modular.searchRoute(route, tempRouteName, path))) {
+            let guards = modular_base.Modular._prepareGuardList(modular_base.Modular._masterRouteGuards, route.guards);
+            modular_base.Modular._masterRouteGuards = null;
+            let guard = modular_base.Modular._verifyGuard(guards, path);
+            if ((tempRouteName === path || tempRouteName === dart.str(path) + "/") && path !== "/") {
+              guard = modular_base.Modular._verifyGuard(guards, path);
+            }
+            return guard == null ? route : null;
+          }
+        }
+      }
+      return null;
+    }
+    static _prepareGuardList(moduleGuard, routeGuard) {
+      if (moduleGuard == null) {
+        moduleGuard = T$.JSArrayOfRouteGuardL().of([]);
+      }
+      if (routeGuard == null) {
+        routeGuard = T$.JSArrayOfRouteGuardL().of([]);
+      }
+      return T$.ListOfRouteGuardL().from((() => {
+        let t0 = core.List.of(moduleGuard);
+        t0[$addAll](routeGuard);
+        return t0;
+      })());
+    }
+    static selectRoute(path, module = null) {
+      let t1;
+      if (path[$isEmpty]) {
+        dart.throw(core.Exception.new("Router can not be empty"));
+      }
+      let route = modular_base.Modular._searchInModule((t1 = module, t1 == null ? modular_base.Modular._initialModule : t1), "", path);
+      return route;
+    }
+    static oldProccess($36old) {
+      let t1, t1$, t1$0, t1$1, t1$2, t1$3;
+      if ((t1 = $36old, t1 == null ? null : t1.args) != null) modular_base.Modular._args = (t1$0 = (t1$ = $36old, t1$ == null ? null : t1$.args), t1$0 == null ? null : t1$0.copy());
+      if ((t1$1 = $36old, t1$1 == null ? null : t1$1.link) != null) modular_base.Modular._routeLink = (t1$3 = (t1$2 = $36old, t1$2 == null ? null : t1$2.link), t1$3 == null ? null : t1$3.copy());
+    }
+    static generateRoute(T, settings, module = null, onChangeRoute = null) {
+      let isRouterOutlet = module != null;
+      let path = settings.name;
+      let router = modular_base.Modular.selectRoute(path, module);
+      if (router == null) {
+        return null;
+      }
+      if (!isRouterOutlet) {
+        modular_base.Modular._old = new old.Old.new({args: modular_base.Modular.args, link: T$.RouteLinkL().as(modular_base.Modular.link)});
+        modular_base.Modular.updateCurrentModule("app");
+      }
+      modular_base.Modular._args = new modular_base.ModularArguments.new(router.params, settings.arguments);
+      modular_base.Modular._routeLink = new route_link.RouteLink.new({path: path, modulePath: router.modulePath});
+      if (settings.name === "/") {
+        router = router.copyWith({transition: modular_router.TransitionType.noTransition});
+      }
+      if (onChangeRoute != null) {
+        onChangeRoute(path);
+      }
+      return dart.legacy(navigator.Route$(dart.legacy(T))).as(router.getPageRoute({settings: settings, injectMap: modular_base.Modular._injectMap, isRouterOutlet: isRouterOutlet}));
+    }
+    static addCoreInit(module) {
+      let tagText = dart.toString(dart.runtimeType(module));
+      modular_base.Modular.addCoreInitFromTag(module, tagText);
+    }
+    static addCoreInitFromTag(module, tagText) {
+      module.instance();
+      modular_base.Modular._injectMap[$_set](tagText, module);
+    }
+  };
+  (modular_base.Modular.new = function() {
+    ;
+  }).prototype = modular_base.Modular.prototype;
+  dart.addTypeTests(modular_base.Modular);
+  dart.addTypeCaches(modular_base.Modular);
+  dart.setLibraryUri(modular_base.Modular, I[16]);
+  dart.defineLazy(modular_base.Modular, {
+    /*modular_base.Modular.initialRoute*/get initialRoute() {
+      return "/";
+    },
+    /*modular_base.Modular.debugMode*/get debugMode() {
+      return !false;
+    },
+    set debugMode(_) {},
+    /*modular_base.Modular.isCupertino*/get isCupertino() {
+      return false;
+    },
+    set isCupertino(_) {},
+    /*modular_base.Modular._injectMap*/get _injectMap() {
+      return new (T$.IdentityMapOfStringL$ChildModuleL()).new();
+    },
+    /*modular_base.Modular._initialModule*/get _initialModule() {
+      return null;
+    },
+    set _initialModule(_) {},
+    /*modular_base.Modular._args*/get _args() {
+      return null;
+    },
+    set _args(_) {},
+    /*modular_base.Modular._routeLink*/get _routeLink() {
+      return null;
+    },
+    set _routeLink(_) {},
+    /*modular_base.Modular._old*/get _old() {
+      return new old.Old.new();
+    },
+    set _old(_) {},
+    /*modular_base.Modular.navigatorDelegate*/get navigatorDelegate() {
+      return null;
+    },
+    set navigatorDelegate(_) {},
+    /*modular_base.Modular.currentModule*/get currentModule() {
+      return T$.JSArrayOfStringL().of([]);
+    },
+    set currentModule(_) {},
+    /*modular_base.Modular._navigators*/get _navigators() {
+      return new (T$.IdentityMapOfStringL$GlobalKeyLOfNavigatorStateL()).new();
+    },
+    set _navigators(_) {},
+    /*modular_base.Modular._masterRouteGuards*/get _masterRouteGuards() {
+      return null;
+    },
+    set _masterRouteGuards(_) {}
+  }, true);
+  var params$0 = dart.privateName(modular_base, "ModularArguments.params");
+  var data$ = dart.privateName(modular_base, "ModularArguments.data");
+  modular_base.ModularArguments = class ModularArguments extends core.Object {
+    get params() {
+      return this[params$0];
+    }
+    set params(value) {
+      super.params = value;
+    }
+    get data() {
+      return this[data$];
+    }
+    set data(value) {
+      super.data = value;
+    }
+    copy() {
+      return new modular_base.ModularArguments.new(this.params, this.data);
+    }
+  };
+  (modular_base.ModularArguments.new = function(params, data) {
+    this[params$0] = params;
+    this[data$] = data;
+    ;
+  }).prototype = modular_base.ModularArguments.prototype;
+  dart.addTypeTests(modular_base.ModularArguments);
+  dart.addTypeCaches(modular_base.ModularArguments);
+  dart.setMethodSignature(modular_base.ModularArguments, () => ({
+    __proto__: dart.getMethods(modular_base.ModularArguments.__proto__),
+    copy: dart.fnType(dart.legacy(modular_base.ModularArguments), [])
+  }));
+  dart.setLibraryUri(modular_base.ModularArguments, I[16]);
+  dart.setFieldSignature(modular_base.ModularArguments, () => ({
+    __proto__: dart.getFields(modular_base.ModularArguments.__proto__),
+    params: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))),
+    data: dart.finalFieldType(dart.dynamic)
+  }));
+  modular_base._debugPrintModular = function _debugPrintModular$0(text) {
+    if (dart.test(modular_base.Modular.debugMode)) {
+      print.debugPrint(text);
+    }
+  };
+  var params$1 = dart.privateName(inject, "Inject.params");
+  var tag$ = dart.privateName(inject, "Inject.tag");
+  var typesInRequest$ = dart.privateName(inject, "Inject.typesInRequest");
+  const _is_Inject_default = Symbol('_is_Inject_default');
+  inject.Inject$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    class Inject extends core.Object {
+      get params() {
+        return this[params$1];
+      }
+      set params(value) {
+        this[params$1] = value;
+      }
+      get tag() {
+        return this[tag$];
+      }
+      set tag(value) {
+        super.tag = value;
+      }
+      get typesInRequest() {
+        return this[typesInRequest$];
+      }
+      set typesInRequest(value) {
+        super.typesInRequest = value;
+      }
+      static of() {
+        return new (inject.Inject$(dart.legacy(T))).new({tag: dart.wrapType(dart.legacy(T)).toString()});
+      }
+      call(B, opts) {
+        let params = opts && 'params' in opts ? opts.params : null;
+        let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : null;
+        return this.get(dart.legacy(B), {params: params, defaultValue: defaultValue});
+      }
+      get(B, opts) {
+        let params = opts && 'params' in opts ? opts.params : null;
+        let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : null;
+        params == null ? params = new (T$.IdentityMapOfStringL$dynamic()).new() : null;
+        if (this.tag == null) {
+          return modular_base.Modular.get(dart.legacy(B), {params: params, typesInRequest: this.typesInRequest, defaultValue: defaultValue});
+        } else {
+          return modular_base.Modular.get(dart.legacy(B), {module: this.tag, params: params, typesInRequest: this.typesInRequest, defaultValue: defaultValue});
+        }
+      }
+      get args() {
+        return modular_base.Modular.args;
+      }
+      get link() {
+        return T$.RouteLinkL().as(modular_base.Modular.link);
+      }
+      dispose(B) {
+        if (dart.toString(dart.wrapType(TL())[$runtimeType]) === "dynamic") {
+          modular_base.Modular.dispose(dart.legacy(B));
+        } else {
+          modular_base.Modular.dispose(dart.legacy(B), this.tag);
+        }
+      }
+    }
+    (Inject.new = function(opts) {
+      let params = opts && 'params' in opts ? opts.params : null;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let typesInRequest = opts && 'typesInRequest' in opts ? opts.typesInRequest : null;
+      this[params$1] = new (T$.IdentityMapOfStringL$dynamic()).new();
+      this[params$1] = params;
+      this[tag$] = tag;
+      this[typesInRequest$] = typesInRequest;
+      ;
+    }).prototype = Inject.prototype;
+    dart.addTypeTests(Inject);
+    Inject.prototype[_is_Inject_default] = true;
+    dart.addTypeCaches(Inject);
+    dart.setMethodSignature(Inject, () => ({
+      __proto__: dart.getMethods(Inject.__proto__),
+      call: dart.gFnType(B => [dart.legacy(B), [], {defaultValue: dart.legacy(B), params: dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))}, {}]),
+      get: dart.gFnType(B => [dart.legacy(B), [], {defaultValue: dart.legacy(B), params: dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))}, {}]),
+      dispose: dart.gFnType(B => [dart.void, []])
+    }));
+    dart.setGetterSignature(Inject, () => ({
+      __proto__: dart.getGetters(Inject.__proto__),
+      args: dart.legacy(modular_base.ModularArguments),
+      link: dart.legacy(route_link.RouteLink)
+    }));
+    dart.setLibraryUri(Inject, I[4]);
+    dart.setFieldSignature(Inject, () => ({
+      __proto__: dart.getFields(Inject.__proto__),
+      params: dart.fieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))),
+      tag: dart.finalFieldType(dart.legacy(core.String)),
+      typesInRequest: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.Type))))
+    }));
+    return Inject;
+  });
+  inject.Inject = inject.Inject$();
+  dart.addTypeTests(inject.Inject, _is_Inject_default);
+  const _is_InjectMixinBase_default = Symbol('_is_InjectMixinBase_default');
+  inject.InjectMixinBase$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var InjectOfTL = () => (InjectOfTL = dart.constFn(inject.Inject$(TL())))();
+    class InjectMixinBase extends core.Object {}
+    InjectMixinBase[dart.mixinOn] = Object => class InjectMixinBase extends Object {
+      get(S) {
+        return this[_inject].get(dart.legacy(S));
+      }
+    };
+    (InjectMixinBase[dart.mixinNew] = function() {
+      this[_inject] = InjectOfTL().of();
+    }).prototype = InjectMixinBase.prototype;
+    dart.addTypeTests(InjectMixinBase);
+    InjectMixinBase.prototype[_is_InjectMixinBase_default] = true;
+    dart.addTypeCaches(InjectMixinBase);
+    InjectMixinBase[dart.implements] = () => [core.Object];
+    dart.setMethodSignature(InjectMixinBase, () => ({
+      __proto__: dart.getMethods(InjectMixinBase.__proto__),
+      get: dart.gFnType(S => [dart.legacy(S), []])
+    }));
+    dart.setLibraryUri(InjectMixinBase, I[4]);
+    dart.setFieldSignature(InjectMixinBase, () => ({
+      __proto__: dart.getFields(InjectMixinBase.__proto__),
+      [_inject]: dart.finalFieldType(dart.legacy(inject.Inject$(dart.legacy(T))))
+    }));
+    return InjectMixinBase;
+  });
+  inject.InjectMixinBase = inject.InjectMixinBase$();
+  dart.addTypeTests(inject.InjectMixinBase, _is_InjectMixinBase_default);
+  var inject$ = dart.privateName(bind, "Bind.inject");
+  var singleton$ = dart.privateName(bind, "Bind.singleton");
+  var lazy$ = dart.privateName(bind, "Bind.lazy");
+  const _is_Bind_default = Symbol('_is_Bind_default');
+  bind.Bind$ = dart.generic(T => {
+    class Bind extends core.Object {
+      get inject() {
+        return this[inject$];
+      }
+      set inject(value) {
+        super.inject = value;
+      }
+      get singleton() {
+        return this[singleton$];
+      }
+      set singleton(value) {
+        super.singleton = value;
+      }
+      get lazy() {
+        return this[lazy$];
+      }
+      set lazy(value) {
+        super.lazy = value;
+      }
+    }
+    (Bind.new = function(inject, opts) {
+      let singleton = opts && 'singleton' in opts ? opts.singleton : true;
+      let lazy = opts && 'lazy' in opts ? opts.lazy : true;
+      this[inject$] = inject;
+      this[singleton$] = singleton;
+      this[lazy$] = lazy;
+      if (!(dart.test(singleton) || dart.test(lazy))) dart.assertFailed("'singleton' can't be false if 'lazy' is also false", I[18], 14, 16, "(singleton || lazy)");
+      ;
+    }).prototype = Bind.prototype;
+    dart.addTypeTests(Bind);
+    Bind.prototype[_is_Bind_default] = true;
+    dart.addTypeCaches(Bind);
+    dart.setLibraryUri(Bind, I[19]);
+    dart.setFieldSignature(Bind, () => ({
+      __proto__: dart.getFields(Bind.__proto__),
+      inject: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(T), [dart.legacy(inject.Inject)]))),
+      singleton: dart.finalFieldType(dart.legacy(core.bool)),
+      lazy: dart.finalFieldType(dart.legacy(core.bool))
+    }));
+    return Bind;
+  });
+  bind.Bind = bind.Bind$();
+  dart.addTypeTests(bind.Bind, _is_Bind_default);
+  var inject$0 = dart.privateName(bind, "BindInject.inject");
+  var singleton$0 = dart.privateName(bind, "BindInject.singleton");
+  var lazy$0 = dart.privateName(bind, "BindInject.lazy");
+  const _is_BindInject_default = Symbol('_is_BindInject_default');
+  bind.BindInject$ = dart.generic(T => {
+    class BindInject extends bind.Bind$(dart.legacy(T)) {
+      get inject() {
+        return this[inject$0];
+      }
+      set inject(value) {
+        super.inject = value;
+      }
+      get singleton() {
+        return this[singleton$0];
+      }
+      set singleton(value) {
+        super.singleton = value;
+      }
+      get lazy() {
+        return this[lazy$0];
+      }
+      set lazy(value) {
+        super.lazy = value;
+      }
+    }
+    (BindInject.new = function(inject, opts) {
+      let singleton = opts && 'singleton' in opts ? opts.singleton : true;
+      let lazy = opts && 'lazy' in opts ? opts.lazy : true;
+      this[inject$0] = inject;
+      this[singleton$0] = singleton;
+      this[lazy$0] = lazy;
+      BindInject.__proto__.new.call(this, inject, {singleton: singleton, lazy: lazy});
+      ;
+    }).prototype = BindInject.prototype;
+    dart.addTypeTests(BindInject);
+    BindInject.prototype[_is_BindInject_default] = true;
+    dart.addTypeCaches(BindInject);
+    dart.setLibraryUri(BindInject, I[19]);
+    dart.setFieldSignature(BindInject, () => ({
+      __proto__: dart.getFields(BindInject.__proto__),
+      inject: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(T), [dart.legacy(inject.Inject)]))),
+      singleton: dart.finalFieldType(dart.legacy(core.bool)),
+      lazy: dart.finalFieldType(dart.legacy(core.bool))
+    }));
+    return BindInject;
+  });
+  bind.BindInject = bind.BindInject$();
+  dart.addTypeTests(bind.BindInject, _is_BindInject_default);
+  dart.trackLibraries("packages/flutter_modular/src/widgets/router_outlet_list.dart", {
+    "package:flutter_modular/src/widgets/router_outlet_list.dart": router_outlet_list,
+    "package:flutter_modular/src/widgets/widget_module.dart": widget_module,
+    "package:flutter_modular/src/widgets/router_outlet.dart": router_outlet,
+    "package:flutter_modular/src/widgets/modular_stateless_widget.dart": modular_stateless_widget,
+    "package:flutter_modular/src/widgets/modular_stateful_widget_state.dart": modular_stateful_widget_state,
+    "package:flutter_modular/src/widgets/modular_app.dart": modular_app,
+    "package:flutter_modular/src/widgets/consumer_widget.dart": consumer_widget,
+    "package:flutter_modular/src/routers/route_link.dart": route_link,
+    "package:flutter_modular/src/interfaces/main_module.dart": main_module,
+    "package:flutter_modular/src/navigator/modular_navigator.dart": modular_navigator,
+    "package:flutter_modular/src/utils/old.dart": old,
+    "package:flutter_modular/src/transitions/transitions.dart": transitions$,
+    "package:flutter_modular/src/routers/modular_router.dart": modular_router,
+    "package:flutter_modular/src/interfaces/child_module.dart": child_module,
+    "package:flutter_modular/src/modular_base.dart": modular_base,
+    "package:flutter_modular/src/inject/inject.dart": inject,
+    "package:flutter_modular/src/inject/bind.dart": bind,
+    "package:flutter_modular/flutter_modular.dart": flutter_modular
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["router_outlet_list.dart","widget_module.dart","../interfaces/child_module.dart","router_outlet.dart","../inject/inject.dart","modular_stateless_widget.dart","modular_stateful_widget_state.dart","modular_app.dart","consumer_widget.dart","../routers/route_link.dart","../interfaces/main_module.dart","../navigator/modular_navigator.dart","../utils/old.dart","../transitions/transitions.dart","../routers/modular_router.dart","../modular_base.dart","../inject/bind.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter_modular/src/widgets/router_outlet_list.dart.lib.js"}');
+  // Exports:
+  return {
+    src__widgets__router_outlet_list: router_outlet_list,
+    src__widgets__widget_module: widget_module,
+    src__widgets__router_outlet: router_outlet,
+    src__widgets__modular_stateless_widget: modular_stateless_widget,
+    src__widgets__modular_stateful_widget_state: modular_stateful_widget_state,
+    src__widgets__modular_app: modular_app,
+    src__widgets__consumer_widget: consumer_widget,
+    src__routers__route_link: route_link,
+    src__interfaces__main_module: main_module,
+    src__navigator__modular_navigator: modular_navigator,
+    src__utils__old: old,
+    src__transitions__transitions: transitions$,
+    src__routers__modular_router: modular_router,
+    src__interfaces__child_module: child_module,
+    src__modular_base: modular_base,
+    src__inject__inject: inject,
+    src__inject__bind: bind,
+    flutter_modular: flutter_modular
+  };
+}));
+
+//# sourceMappingURL=router_outlet_list.dart.lib.js.map
