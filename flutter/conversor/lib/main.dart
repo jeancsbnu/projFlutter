@@ -43,19 +43,37 @@ class _HomeState extends State<Home> {
   double euro;
 
   void _realChanged(String text){
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     double real = double.parse(text);
     _dolarController.text = (real/dolar).toStringAsPrecision(2);
     _euroController.text = (real/euro).toStringAsPrecision(2);
   }
   void _dolarChanged(String text){
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     double dolar = double.parse(text);
     _realController.text = (dolar * this.dolar).toStringAsPrecision(2);
     _euroController.text = (dolar * this.dolar/euro).toStringAsPrecision(2);
   }
   void _euroChanged(String text){
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     double euro = double.parse(text);
     _realController.text = (euro * this.euro).toStringAsPrecision(2);
     _dolarController.text = (euro * this.euro / dolar).toStringAsPrecision(2);
+  }
+
+  void _clearAll(){
+    _realController.text = "";
+    _dolarController.text = "";
+    _euroController.text = "";
   }
 
   @override
@@ -79,7 +97,7 @@ class _HomeState extends State<Home> {
             default:
               if(snaphost.hasError){
                 return Center(
-                  child: Text("Erro ao carregar os dados :(", style: TextStyle(color: Colors.amber, fontSize: 25.0), textAlign: TextAlign.center,),
+                  child: Text("Erro ao carregar os dados $snaphost.error", style: TextStyle(color: Colors.amber, fontSize: 25.0), textAlign: TextAlign.center,),
                 );
               }else{
                 dolar = snaphost.data["results"]["currencies"]["USD"]["buy"];
